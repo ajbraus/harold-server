@@ -1,3 +1,13 @@
-add a single resource - todos
-clone and turn into just API for todos (with nested lists of todos)
-push to heroku
+DONE See articles from DB
+Add Campaign
+Add Passport Email, Twitter, FB
+When to use sockets - POST comments, POST backing, POST articles
+
+
+
+
+WEBSITE
+Basic navigation and templating
+See articles
+See campaigns
+New articles Save and Publish 

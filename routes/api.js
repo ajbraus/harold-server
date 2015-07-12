@@ -1,58 +1,64 @@
 /*
- * Post Resource
+ * Article Resource
  */
 
-var Post = require('mongoose').model('Post');
+var Article = require('mongoose').model('Article');
 
 module.exports = function(app) {
+  app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  });
+  
   // INDEX
-  app.get('/api/room/:room_name/posts', function (req, res) {
-    if (req.params.room_name[0] === "#") {
-      req.params.room_name = req.params.room_name.substring(1);
-    }
-    req.params.room_name = req.params.room_name.toLowerCase();
-
-    Post.find(req.params).sort('-created_at').exec(function(err, posts) {
+  app.get('/api/articles', function (req, res) {
+    Article.find().sort('-created_at').exec(function(err, articles) {
       if (err) { return res.status(404).send(err) };
-      res.status(200).json(posts); // return all nerds in JSON format
+      // var articles = [
+      //   { id: 1, campaing_id: 1, topic: "Environment", title: 'Fishing reduced endangered porpoise population to 97', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
+      //   { id: 2, campaing_id: 1, topic: "Environment", title: 'Pakistan suspends executions for Ramadan', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
+      //   { id: 3, campaing_id: 1, topic: "Environment", title: 'Dubstep', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
+      //   { id: 4, campaing_id: 1, topic: "Environment", title: 'Indie', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
+      //   { id: 5, campaing_id: 1, topic: "Environment", title: 'Rap', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"}
+      // ];
+      res.status(200).json(articles); // return all nerds in JSON format
     });
   });
 
   // CREATE
-  app.post('/api/posts', function (req, res) {
-    var post = new Post({
+  app.post('/api/articles', function (req, res) {
+    var article = new Article({
         body: req.body.body
-      , room_name: req.body.roomName
     });
-    console.log(post);
-    post.save(function (err, post) {
-      console.log('post saved')
+    console.log(article);
+    article.save(function (err, article) {
+      console.log('article saved')
       if (err) { return res.send(err) };
       res.status(201); 
-      io.sockets.emit('post.published', post);
+      io.sockets.emit('article.published', article);
     });
   });
 
   // SHOW
-  app.get('/api/posts/:id', function (req, res) {
-    Post.findById(req.params.id, function(err, post) {
+  app.get('/api/articles/:id', function (req, res) {
+    Article.findById(req.params.id, function(err, article) {
       console.log('blah')
       if (err) { return res.status(404).send(err) };
-      res.status(200).json(post); 
+      res.status(200).json(article); 
     });
   });
 
   // UPDATE
-  app.put('/api/posts/:id', function (req, res) {
-    Post.findOneAndUpdate({ _id: req.params.id}, req.query.post, function (err, post) {
+  app.put('/api/articles/:id', function (req, res) {
+    Article.findOneAndUpdate({ _id: req.params.id}, req.query.article, function (err, article) {
       if (err) { return res.send(err) }
-      res.status(200).json(post)
+      res.status(200).json(article)
     });
   });
 
   // DESTROY
-  app.delete('/api/posts/:id', function (req, res) { 
-    Post.findByIdAndRemove(req.params.id, function (err, post) {
+  app.delete('/api/articles/:id', function (req, res) { 
+    Article.findByIdAndRemove(req.params.id, function (err, article) {
       if (err) { return res.send(err) }
       res.status(200);
     });
