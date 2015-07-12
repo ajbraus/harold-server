@@ -16,16 +16,33 @@ var CampaignSchema = new Schema({
   , goal_in_cents : { type: Number }
   , img_url       : { type: String, trim: true }
   , video_url     : { type: String, trim: true }
+  , user_id       : { type: String }
+
   // has_many articles
   // belongs_to user
   // has_many backings
   // has_many backers through backings
 });
 
-// virtual attributes
-// goal
-// percent_backed
-// 
+// VIRTUAL ATTRIBUTES
+
+//GOAL
+CampaignSchema.virtual('goal').get(function () {
+  var num = this.goal_in_cents
+  var goal = (num/100).toFixed(2);
+  goal = "$" + goal.toString()
+  return goal;
+}).set(function(name) {
+  var num = parseInt(goal)
+  num = num * 100
+  this.goal_in_cents = num
+});
+
+// PERCENT_BACKED
+CampaignSchema.virtual('percent_backed').get(function () {
+  // (goal_in_cents / 100).toFixed(2) / total backing / 100
+  return 40;
+})
 
 // BEFORE/AFTER FILTER
 CampaignSchema.pre('save', function(next){
@@ -34,13 +51,6 @@ CampaignSchema.pre('save', function(next){
   this.updated_at = now;
   if ( !this.created_at ) {
     this.created_at = now;
-  }
-  next();
-
-  // ENCRYPT PASSWORD
-  if (this.password) {
-    var md5 = crypto.createHash('md5');
-    this.password = md5.update(this.password).digest('hex');
   }
   next();
 });

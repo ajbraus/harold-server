@@ -49,6 +49,6 @@ require('./routes/api')(app);
 app.get('*', routes.index);
 
 module.exports = server;
-console.log(process.env.NODE_ENV  + ' server running at http://localhost:' + config.port);
+console.log(process.env.NODE_ENV  + ' server running at port' + config.port);
 
 

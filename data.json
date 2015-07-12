@@ -1,0 +1,55 @@
+//articles
+[
+    {
+     campaign_id: "55a1d753bd5a6f3eb81bb9e7",
+     topic: "Environment", 
+     title: 'Fishing reduced endangered porpoise population to 97', 
+     image_url: "http://www.crystalvaults.com/images/bagua-square.gif",
+     body: "The vaquita, an aquatic mammal which only exists in one small area of Mexico, is on the verge of extinction.  Can it still be saved? <p>The vaquita, which in Spanish means “little cow,” is a type of porpoise endemic to Mexico.  It’s the smallest and rarest type of porpoise.  Its scientific name is Phocoena sinus.  <p>One curious thing about the vaquita is that the female of the species is larger than the male, which is rare for mammals.  The male is typically 53.1 inches long, while the female is 55.4 inches long.  <p>Not only is the vaquita endemic to the country of Mexico, it is endemic to only one area of Mexico – the lagoons of the Colorado River delta and nearshore areas of the upper Sea of Cortes, also called the Gulf of California. (This body of water, between the Baja California peninsula and the Mexican mainland, is said to be one of the most biologically diverse seas in the world.)   <p>The vaquita has been known to science only since the 1950s, and it has been declining ever since and is now in danger of extinction."
+    },
+     {
+     campaign_id: "55a1d753bd5a6f3eb81bb9e7",
+     topic: "Environment", 
+     title: 'Fishing reduced endangered porpoise population to 97', 
+     image_url: "http://www.crystalvaults.com/images/bagua-square.gif",
+     body: "The vaquita, an aquatic mammal which only exists in one small area of Mexico, is on the verge of extinction.  Can it still be saved? <p>The vaquita, which in Spanish means “little cow,” is a type of porpoise endemic to Mexico.  It’s the smallest and rarest type of porpoise.  Its scientific name is Phocoena sinus.  <p>One curious thing about the vaquita is that the female of the species is larger than the male, which is rare for mammals.  The male is typically 53.1 inches long, while the female is 55.4 inches long.  <p>Not only is the vaquita endemic to the country of Mexico, it is endemic to only one area of Mexico – the lagoons of the Colorado River delta and nearshore areas of the upper Sea of Cortes, also called the Gulf of California. (This body of water, between the Baja California peninsula and the Mexican mainland, is said to be one of the most biologically diverse seas in the world.)   <p>The vaquita has been known to science only since the 1950s, and it has been declining ever since and is now in danger of extinction."
+    },
+     {
+     campaign_id: "55a1d753bd5a6f3eb81bb9e7",
+     topic: "Environment", 
+     title: 'Fishing reduced endangered porpoise population to 97', 
+     image_url: "http://www.crystalvaults.com/images/bagua-square.gif",
+     body: "The vaquita, an aquatic mammal which only exists in one small area of Mexico, is on the verge of extinction.  Can it still be saved? <p>The vaquita, which in Spanish means “little cow,” is a type of porpoise endemic to Mexico.  It’s the smallest and rarest type of porpoise.  Its scientific name is Phocoena sinus.  <p>One curious thing about the vaquita is that the female of the species is larger than the male, which is rare for mammals.  The male is typically 53.1 inches long, while the female is 55.4 inches long.  <p>Not only is the vaquita endemic to the country of Mexico, it is endemic to only one area of Mexico – the lagoons of the Colorado River delta and nearshore areas of the upper Sea of Cortes, also called the Gulf of California. (This body of water, between the Baja California peninsula and the Mexican mainland, is said to be one of the most biologically diverse seas in the world.)   <p>The vaquita has been known to science only since the 1950s, and it has been declining ever since and is now in danger of extinction."
+    },
+     {
+     campaign_id: "55a1d753bd5a6f3eb81bb9e7",
+     topic: "Environment", 
+     title: 'Fishing reduced endangered porpoise population to 97', 
+     image_url: "http://www.crystalvaults.com/images/bagua-square.gif",
+     body: "The vaquita, an aquatic mammal which only exists in one small area of Mexico, is on the verge of extinction.  Can it still be saved? <p>The vaquita, which in Spanish means “little cow,” is a type of porpoise endemic to Mexico.  It’s the smallest and rarest type of porpoise.  Its scientific name is Phocoena sinus.  <p>One curious thing about the vaquita is that the female of the species is larger than the male, which is rare for mammals.  The male is typically 53.1 inches long, while the female is 55.4 inches long.  <p>Not only is the vaquita endemic to the country of Mexico, it is endemic to only one area of Mexico – the lagoons of the Colorado River delta and nearshore areas of the upper Sea of Cortes, also called the Gulf of California. (This body of water, between the Baja California peninsula and the Mexican mainland, is said to be one of the most biologically diverse seas in the world.)   <p>The vaquita has been known to science only since the 1950s, and it has been declining ever since and is now in danger of extinction."
+    },
+     {
+     campaign_id: "55a1d753bd5a6f3eb81bb9e7",
+     topic: "Environment", 
+     title: 'Fishing reduced endangered porpoise population to 97', 
+     image_url: "http://www.crystalvaults.com/images/bagua-square.gif",
+     body: "The vaquita, an aquatic mammal which only exists in one small area of Mexico, is on the verge of extinction.  Can it still be saved? <p>The vaquita, which in Spanish means “little cow,” is a type of porpoise endemic to Mexico.  It’s the smallest and rarest type of porpoise.  Its scientific name is Phocoena sinus.  <p>One curious thing about the vaquita is that the female of the species is larger than the male, which is rare for mammals.  The male is typically 53.1 inches long, while the female is 55.4 inches long.  <p>Not only is the vaquita endemic to the country of Mexico, it is endemic to only one area of Mexico – the lagoons of the Colorado River delta and nearshore areas of the upper Sea of Cortes, also called the Gulf of California. (This body of water, between the Baja California peninsula and the Mexican mainland, is said to be one of the most biologically diverse seas in the world.)   <p>The vaquita has been known to science only since the 1950s, and it has been declining ever since and is now in danger of extinction."
+    }
+]
+
+//campaigns
+[
+    {
+        _id: "55a1d753bd5a6f3eb81bb9e7",
+
+    }
+]
+
+//users
+[
+    {
+    'first': "John", 
+    'last': "Doe",
+    "img_url": "http://www.likecool.com/Gear/Pic/One%20Trippy%20Profile%20Pic/One-Trippy-Profile-Pic.jpg"
+    }
+]

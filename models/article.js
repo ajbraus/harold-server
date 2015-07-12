@@ -13,7 +13,10 @@ var ArticleSchema = new Schema({
   , topic         : { type: String, required: true, trim: true }
   , body          : { type: String, required: true, trim: true }
   , img_url       : { type: String, required: true, trim: true }
-  // campaign
+
+  // REFERENCES
+  , campaign_id   : { type: String }
+  , author_id     : { type: String }
 });
 
 // BEFORE/AFTER FILTER
@@ -23,13 +26,6 @@ ArticleSchema.pre('save', function(next){
   this.updated_at = now;
   if ( !this.created_at ) {
     this.created_at = now;
-  }
-  next();
-
-  // ENCRYPT PASSWORD
-  if (this.password) {
-    var md5 = crypto.createHash('md5');
-    this.password = md5.update(this.password).digest('hex');
   }
   next();
 });

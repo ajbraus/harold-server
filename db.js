@@ -8,7 +8,7 @@ var config    = require('./config'),
 module.exports = function() {
   var db = mongoose.connect(config.db);
   require('./models/article');
-  // require('./models/campaign');
+  require('./models/campaign');
   
   return db;
 };

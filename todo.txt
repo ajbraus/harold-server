@@ -1,13 +1,29 @@
 DONE See articles from DB
-Add Campaign
-Add Passport Email, Twitter, FB
+DONE See Campaigns
+DONE remove 'id' attribute from articles
+DONE add user model with unsalted password
+DONE add backing modal and controller
+
+New User - Add Passport Email, Twitter, FB
+  onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
+New Campaign
+New Article
+New Backer
+
+user follows campaigns (user.campaigns)
+user follows topics (user.topics)
+
+user starts campaigns (user.unpublished_campaigns)
+user publishes campaings (user.published_campaigns)
+user starts articles (user.unpublished_articles)
+user publishes articles (user.published_articles)
+
 When to use sockets - POST comments, POST backing, POST articles
-
-
-
 
 WEBSITE
 Basic navigation and templating
 See articles
 See campaigns
+  Nested routes /campaign/:id/article/:id
 New articles Save and Publish 
+New campaigns Save and Publish

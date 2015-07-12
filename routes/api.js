@@ -3,25 +3,38 @@
  */
 
 var Article = require('mongoose').model('Article');
+var Campaign = require('mongoose').model('Campaign');
 
 module.exports = function(app) {
   app.all('/*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
   });
-  
-  // INDEX
+
+  // ARTICLES INDEX
   app.get('/api/articles', function (req, res) {
     Article.find().sort('-created_at').exec(function(err, articles) {
       if (err) { return res.status(404).send(err) };
-      // var articles = [
-      //   { id: 1, campaing_id: 1, topic: "Environment", title: 'Fishing reduced endangered porpoise population to 97', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
-      //   { id: 2, campaing_id: 1, topic: "Environment", title: 'Pakistan suspends executions for Ramadan', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
-      //   { id: 3, campaing_id: 1, topic: "Environment", title: 'Dubstep', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
-      //   { id: 4, campaing_id: 1, topic: "Environment", title: 'Indie', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"},
-      //   { id: 5, campaing_id: 1, topic: "Environment", title: 'Rap', image_url: "http://www.crystalvaults.com/images/bagua-square.gif"}
-      // ];
+
       res.status(200).json(articles); // return all nerds in JSON format
+    });
+  });
+
+  // CAMPAIGNS INDEX
+  app.get('/api/campaigns', function (req, res) {
+    Campaign.find().sort('-created_at').exec(function(err, campaigns) {
+      if (err) { return res.status(404).send(err) };
+      
+      res.status(200).json(campaigns); // return all nerds in JSON format
+    });
+  });
+
+  app.get('/api/campaigns/:id', function (req, res) {
+    console.log(req.params.id)
+    Campaign.findOne({ _id: req.params.id }).exec(function(err, campaign) {
+      if (err) { return res.status(404).send(err) };
+      
+      res.status(200).json(campaign); // return all nerds in JSON format
     });
   });
 
