@@ -29,6 +29,8 @@
     "body-parser": "^1.12.3",
     "bower": "^1.4.1",
     "chai": "^2.3.0",
+    "chai-http": "^1.0.0",
+    "cheerio": "^0.19.0",
     "error-handler": "^1.0.0",
     "express": "^4.10.7",
     "express-logger": "0.0.3",

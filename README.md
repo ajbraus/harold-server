@@ -1,4 +1,4 @@
-# MEAN-seed
+# Harold-server
 
 ## What's in the Box?
 
@@ -9,8 +9,8 @@
 
 ## Getting Started
 
-1. ```$ git clone https://github.com/ajbraus/seed-mean.git seedMean```
-2. ```$ cd seedMean```
+1. ```$ git clone https://github.com/ajbraus/seed-mean.git app-name```
+2. ```$ cd app-name```
 3. ```$ npm install```
 4. ```$ nodemon```
 
