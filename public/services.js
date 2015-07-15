@@ -5,8 +5,11 @@
 'use strict';
 
 angular.module('myApp.services', [])
-  .factory('Post', function ($resource, HOST) {
-    return $resource(HOST + '/api/room/:room_name/posts/:id', {  room_name: '@room_name', id: '@id' })
+  .factory('Article', function ($resource, HOST) {
+    return $resource(HOST + '/articles/:id', { id: '@id' })
+  })
+  .factory('Campaign', function ($resource, HOST) {
+    return $resource(HOST + '/campaigns/:id', { id: '@id' })
   })
 
   .factory('Socket', ['socketFactory', function (socketFactory) {

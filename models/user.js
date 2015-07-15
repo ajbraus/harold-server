@@ -3,15 +3,18 @@
  */
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    bcrypt = require('bcryptjs')
 
 var UserSchema = new Schema({
     created_at    : { type: Date }
   , updated_at    : { type: Date }
-  , username      : { type: String }
-  , email         : { type: String }
-  , password      : { type: String }
-  , name {
+  , handle        : { type: String }
+  , email         : { type: String, unique: true, lowercase: true }
+  , password      : { type: String, select: false }
+  , facebook      : { type: String }
+  , twitter       : { type: String }
+  , name          : {
       first       : { type: String, trim: true }
     , last        : { type: String, trim: true }    
   }
@@ -29,19 +32,25 @@ UserSchema.virtual('name.full').get(function () {
 
 // BEFORE/AFTER FILTER
 UserSchema.pre('save', function(next){
+  var user = this;
   // SET CREATED_AT AND UPDATED_AT
   now = new Date();
-  this.updated_at = now;
-  if ( !this.created_at ) {
-    this.created_at = now;
+  user.updated_at = now;
+  if ( !user.created_at ) {
+    user.created_at = now;
   }
-  next();
 
   // ENCRYPT PASSWORD
-  if (this.password) {
-    var md5 = crypto.createHash('md5');
-    this.password = md5.update(this.password).digest('hex');
+  if (!user.isModified('password')) {
+    return next();
   }
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      user.password = hash;
+      next();
+    });
+  });
+
   next();
 });
 

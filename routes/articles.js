@@ -1,40 +1,16 @@
 /*
- * Article Resource
+ * articles.js
  */
 
 var Article = require('mongoose').model('Article');
-var Campaign = require('mongoose').model('Campaign');
 
 module.exports = function(app) {
-  app.all('/*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-  });
-
   // ARTICLES INDEX
   app.get('/api/articles', function (req, res) {
     Article.find().sort('-created_at').exec(function(err, articles) {
       if (err) { return res.status(404).send(err) };
 
       res.status(200).json(articles); // return all nerds in JSON format
-    });
-  });
-
-  // CAMPAIGNS INDEX
-  app.get('/api/campaigns', function (req, res) {
-    Campaign.find().sort('-created_at').exec(function(err, campaigns) {
-      if (err) { return res.status(404).send(err) };
-      
-      res.status(200).json(campaigns); // return all nerds in JSON format
-    });
-  });
-
-  app.get('/api/campaigns/:id', function (req, res) {
-    console.log(req.params.id)
-    Campaign.findOne({ _id: req.params.id }).exec(function(err, campaign) {
-      if (err) { return res.status(404).send(err) };
-      
-      res.status(200).json(campaign); // return all nerds in JSON format
     });
   });
 

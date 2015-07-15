@@ -13,7 +13,7 @@ var request = require('request')
       // CHECK FALSE VALUE TO SEE IF WE CAN MAKE TEST FAIL
       // CALL DONE();
 
-describe('Articles - ', function() {
+describe('Articles API - ', function() {
   it('/articles should be ok and have a HTTP of 200 - success', function(done) {
     request(baseUrl + '/articles', function(err, res, body) {
       expect(err).to.be.null

@@ -1,0 +1,4 @@
+h1 Articles
+div(ng-repeat="article in articles")
+  a(href="/campaigns/{{article.campaign_id}}/articles/{{article._id}}")
+    {{article.title}}

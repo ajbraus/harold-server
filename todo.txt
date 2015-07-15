@@ -4,19 +4,40 @@ DONE remove 'id' attribute from articles
 DONE add user model with unsalted password
 DONE add backing modal and controller
 
+Finish tests for articles#index and campaigns#index
+Make tests for articles#create and campaings#create
+
 New User - Add Passport Email, Twitter, FB
   onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
+
+  use local-token strategy - save to localStorage . . . 
+  
+  https://www.npmjs.com/package/passport-local-token
+  MOBILE
+  http://devdactic.com/user-auth-angularjs-ionic/
 New Campaign
 New Article
 New Backer
 
-user follows campaigns (user.campaigns)
-user follows topics (user.topics)
 
-user starts campaigns (user.unpublished_campaigns)
-user publishes campaings (user.published_campaigns)
-user starts articles (user.unpublished_articles)
-user publishes articles (user.published_articles)
+invite only
+onboard like twitter & tumblr
+This is like twitter . . . but backed. Essentially backed to write tweets. . . 
+See articles - sign up for invitation - email
+1. email, pw, pw confirm
+2. how old are you? 30 years young
+3. follow topics, follow campaigns
+4. push mobile
+5. confirm email -> push mobile
+
+
+user follows campaigns (user.campaigns = [id, id]
+user follows topics (user.topics = ['string', 'string'])
+
+user starts campaigns (user.unpublished_campaigns = [id, id])
+user publishes campaings (user.published_campaigns = [id, id])
+user starts articles (user.unpublished_articles = [id, id])
+user publishes articles (user.published_articles = [id, id])
 
 When to use sockets - POST comments, POST backing, POST articles
 
