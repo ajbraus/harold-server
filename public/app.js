@@ -6,13 +6,14 @@
 
 angular.module('myApp', ['ngResource',
                          'ngRoute',
+                         'satellizer',
                          'myApp.services',
                          'myApp.controllers'])
 
   .constant('HOST', 'http://localhost:1337/api') //DEV
   // .constant('HOST', 'http://harold-server.herokuapp.com') //PRODUCTION
-
-  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  
+  .config(['$routeProvider', '$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'templates/articles-index'
@@ -38,5 +39,16 @@ angular.module('myApp', ['ngResource',
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
+    });
+
+    $authProvider.baseUrl = '/api'
+    $authProvider.loginUrl = '/auth/login';
+    $authProvider.signupUrl = '/auth/signup';
+
+    $authProvider.facebook({
+      clientId: '624059410963642'
+    });
+    $authProvider.twitter({
+      url: '/auth/twitter'
     });
   }]);

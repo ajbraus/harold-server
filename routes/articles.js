@@ -2,7 +2,7 @@
  * articles.js
  */
 
-var Article = require('mongoose').model('Article');
+var Article = require('../models/article');
 
 module.exports = function(app) {
   // ARTICLES INDEX

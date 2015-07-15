@@ -6,8 +6,9 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jwt-simple');
 var path = require('path');
 var qs = require('querystring');
-
-var User = require('../models/user')
+var moment = require('moment'); 
+var config = require('../config')
+var _ = require('lodash')
 
 function ensureAuthenticated(req, res, next) {
  if (!req.headers.authorization) {
@@ -39,8 +40,10 @@ function createJWT(user) {
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
 
+var User = require('../models/user')
+
 module.exports = function(app) {
-  app.post('/auth/login', function(req, res) {
+  app.post('/api/auth/login', function(req, res) {
     User.findOne({ email: req.body.email }, '+password', function(err, user) {
       if (!user) {
         return res.status(401).send({ message: 'Wrong email and/or password' });
@@ -54,18 +57,24 @@ module.exports = function(app) {
     });
   });
 
-  app.post('/auth/signup', function(req, res) {
+  app.post('/api/auth/signup', function(req, res) {
     User.findOne({ email: req.body.email }, function(err, existingUser) {
       if (existingUser) {
         return res.status(409).send({ message: 'Email is already taken' });
       }
+      if (req.body.password !== req.body.password_confirm) {
+        return res.status(409).send({ message: 'Passwords do not match' }); 
+      }
       var user = new User({
-        displayName: req.body.displayName,
         email: req.body.email,
         password: req.body.password
       });
-      user.save(function() {
-        res.send({ token: createJWT(user) });
+      user.save(function(err, user) {
+        if (err) {
+          res.status(400).send({ message: "Validation error saving user" });  
+        } else {
+          res.status(201).send({ token: createJWT(user), _id: user._id });  
+        }
       });
     });
   });
@@ -76,7 +85,7 @@ module.exports = function(app) {
    | Login with Facebook
    |--------------------------------------------------------------------------
    */
-  app.post('/auth/facebook', function(req, res) {
+  app.post('/api/auth/facebook', function(req, res) {
     var accessTokenUrl = 'https://graph.facebook.com/v2.3/oauth/access_token';
     var graphApiUrl = 'https://graph.facebook.com/v2.3/me';
     var params = {
@@ -144,7 +153,7 @@ module.exports = function(app) {
    | Login with Twitter
    |--------------------------------------------------------------------------
    */
-  app.post('/auth/twitter', function(req, res) {
+  app.post('/api/auth/twitter', function(req, res) {
     var requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
     var accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
     var profileUrl = 'https://api.twitter.com/1.1/users/show.json?screen_name=';

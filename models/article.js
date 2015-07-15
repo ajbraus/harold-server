@@ -31,4 +31,6 @@ ArticleSchema.pre('save', function(next){
 });
 
 // EXPORT POST MODEL
-mongoose.model('Article', ArticleSchema);
+var Article = mongoose.model('Article', ArticleSchema);
+
+module.exports = Article;

@@ -10,11 +10,15 @@ Make tests for articles#create and campaings#create
 New User - Add Passport Email, Twitter, FB
   onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
 
-  use local-token strategy - save to localStorage . . . 
-  
-  https://www.npmjs.com/package/passport-local-token
-  MOBILE
-  http://devdactic.com/user-auth-angularjs-ionic/
+  satellizer-local
+    DONE register
+      - go to /me
+      - Authorized to edit
+    login
+    confirm email
+  satellizer-facebook
+  satellizer-twitter
+
 New Campaign
 New Article
 New Backer
@@ -30,7 +34,7 @@ See articles - sign up for invitation - email
 4. push mobile
 5. confirm email -> push mobile
 
-
+campaign.author_id
 user follows campaigns (user.campaigns = [id, id]
 user follows topics (user.topics = ['string', 'string'])
 
@@ -42,7 +46,6 @@ user publishes articles (user.published_articles = [id, id])
 When to use sockets - POST comments, POST backing, POST articles
 
 WEBSITE
-Basic navigation and templating
 header date
 create account
 mobile app plug
@@ -50,8 +53,10 @@ topics
 Subscribe
 "Suggested for You"
 Click hole share buttons
-DONE See articles
 See campaigns
   DONE Nested routes /campaign/:id/article/:id
 New articles Save and Publish 
 New campaigns Save and Publish
+
+DONE Basic navigation and templating
+DONE See articles

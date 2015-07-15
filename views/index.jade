@@ -34,34 +34,57 @@ block body
               button.btn.btn-default(type='submit') Submit
             |   
             ul.nav.navbar-nav.navbar-right 
-              li
-                a(href='#') Sign Up
+              li(ng-hide="isAuthenticated()")
+                a(href='#', data-toggle='modal', data-target='#signup-modal') Join
               |   
-              li
-                a(href='#') Log in
+              li(ng-hide="isAuthenticated()")
+                a(href='#', data-toggle='modal', data-target='#login-modal') Login
               |         
-              //- li.dropdown
-              //-   a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-              //-     | Dropdown 
-              //-     span.caret
-              //-   |           
-              //-   ul.dropdown-menu
-              //-     li
-              //-       a(href='#') Action
-              //-     |             
-              //-     li
-              //-       a(href='#') Another action
-              //-     |             
-              //-     li
-              //-       a(href='#') Something else here
-              //-     |             
-              //-     li.divider(role='separator')
-              //-     |             
-              //-     li
-              //-       a(href='#') Separated link
-          // /.navbar-collapse
-        // /.container-fluid
-
+              li.dropdown(ng-show="isAuthenticated()")
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  | Dropdown 
+                  span.caret
+                |           
+                ul.dropdown-menu
+                  li
+                    a(href='#') Action
+                  |             
+                  li
+                    a(href='#') Another action
+                  |             
+                  li
+                    a(href='#') Something else here
+                  |             
+                  li.divider(role='separator')
+                  |             
+                  li
+                    a(href='#') Separated link
+            #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+              .modal-dialog
+                .loginmodal-container
+                  h1 Login to Harold
+                  .login-help.text-muted.text-center Welcome Back
+                  br
+                  form(ng-submit="login()")
+                    input(type='email', ng-model="auth_user.email", name='user', placeholder='Email' required)
+                    input(type='password', ng-model="auth_user.password", name='pass', placeholder='Password' required)
+                    input.login.loginmodal-submit(type='submit', name='login', value='Login') 
+                  .login-help
+                    a(href='#', data-toggle='modal', data-target='#signup-modal') Join
+                    |  - 
+                    a(href='#') Forgot Password
+            #signup-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+              .modal-dialog
+                .loginmodal-container
+                  h1 Join Harold
+                  .login-help.text-muted.text-center Personalized Crowdfunded News
+                  br   
+                  form(ng-submit="signup()")
+                    input(type='email', ng-model="auth_user.email", name='user', placeholder='Email' required)
+                    input(type='password', ng-model="auth_user.password", name='pass', placeholder='Password' required)
+                    input(type='password', ng-model="auth_user.password_confirm", name='pass', placeholder='Confirm Password' required)
+                    input.login.loginmodal-submit(type='submit', name='login', value='Join')
+                  .login-help
+                    a(href='#', data-toggle='modal', data-target='#login-modal') Login
+  alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()") {{alert.msg}}
   .container(ng-view)
-
-    

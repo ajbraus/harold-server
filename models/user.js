@@ -10,15 +10,16 @@ var UserSchema = new Schema({
     created_at    : { type: Date }
   , updated_at    : { type: Date }
   , handle        : { type: String }
-  , email         : { type: String, unique: true, lowercase: true }
-  , password      : { type: String, select: false }
+  , email         : { type: String, unique: true, lowercase: true, required: true }
+  , confirmed     : { type: Boolean, default: false }
+  , password      : { type: String, select: false, required: true }
   , facebook      : { type: String }
   , twitter       : { type: String }
   , name          : {
       first       : { type: String, trim: true }
     , last        : { type: String, trim: true }    
   }
-  , img_url       : { type: String, required: true, trim: true }
+  , img_url       : { type: String, trim: true }
 });
 
 // VIRTUAL ATTRIBUTES
@@ -55,4 +56,6 @@ UserSchema.pre('save', function(next){
 });
 
 // EXPORT POST MODEL
-mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+module.exports = User;

@@ -2,7 +2,7 @@
  * campaigns.js
  */
 
-var Campaign = require('mongoose').model('Campaign');
+var Campaign = require('../models/campaign')
 
 module.exports = function(app) {
 
@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.post('/api/campaigns', function (req, res) {
     var campaign = new Campaign(req.body);
     console.log(campaign);
-    
+
     campaign.save(function (err, campaign) {
       console.log('campaign saved')
       if (err) { return res.send(err) };

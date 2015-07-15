@@ -56,4 +56,6 @@ CampaignSchema.pre('save', function(next){
 });
 
 // EXPORT POST MODEL
-mongoose.model('Campaign', CampaignSchema);
+var Campaign = mongoose.model('Campaign', CampaignSchema);
+
+module.exports = Campaign;

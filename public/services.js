@@ -11,6 +11,43 @@ angular.module('myApp.services', [])
   .factory('Campaign', function ($resource, HOST) {
     return $resource(HOST + '/campaigns/:id', { id: '@id' })
   })
+  .factory('User', function ($resource, HOST) {
+    return $resource(HOST + '/users/:id', { id: '@id' })
+  })
+  .factory('AuthService', function (User) {
+    // currentUser
+  })
+
+  .factory('Alert', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+    var alertService;
+    $rootScope.globalAlerts = [];
+    return alertService = {
+      add: function(type, msg, timeout) {
+        $rootScope.globalAlerts = [];
+        $rootScope.globalAlerts.push({
+          type: type,
+          msg: msg,
+          close: function() {
+            return alertService.closeAlert(this);
+          }
+        });
+        if (timeout) { 
+          $timeout(function(){ 
+            alertService.closeAlert(this); 
+          }, timeout); 
+        }
+      },
+      closeAlert: function(alert) {
+        return this.closeAlertIdx($rootScope.globalAlerts.indexOf(alert));
+      },
+      closeAlertIdx: function(index) {
+        return $rootScope.globalAlerts.splice(index, 1);
+      },
+      clear: function(){
+        $rootScope.globalAlerts = [];
+      }
+    };
+  }])
 
   .factory('Socket', ['socketFactory', function (socketFactory) {
     var socket = socketFactory();

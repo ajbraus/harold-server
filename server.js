@@ -17,7 +17,7 @@ var express = require('express')
   // ROUTING
   , routes = require('./routes')
   // INITIALIZE SERVER
-  , server = app.listen(config.port)
+  , server = app.listen(config.ENVIRONMENT.port)
   , passport = require('passport')
   , cors = require('cors')
 
@@ -56,6 +56,6 @@ require('./routes/auth')(app);
 app.get('*', routes.index);
 
 module.exports = server;
-console.log(process.env.NODE_ENV  + ' server running at port' + config.port);
+console.log(process.env.NODE_ENV  + ' server running at port' + config.ENVIRONMENT.port);
 
 
