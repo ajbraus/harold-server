@@ -1,1 +1,26 @@
-{{campaign.title}}
+.text-center
+  h3 {{campaign.title}}
+  p 
+    b by 
+    a(href="#") Barbra Turkenweil
+br
+.row
+  .col-sm-7
+    img.image-responsive(ng-src="http://placehold.it/240x150", style="width:100%;")    
+    p {{campaign.summary}}
+    img.image-responsive(ng-src="http://placehold.it/240x240", style="width:100%;")
+  .col-sm-5
+    h1 123
+    p backers
+    h1 %{{campaign.percent_backed}} 
+    p Funded of {{campaign.goal}}  
+    progress(max="100" value="{{campaign.percent_backed}}")
+    h1 {{campaign.days_left}} days 
+    p left to back
+    a.btn.btn-lg.btn-success(href="#" ng-click="backCampaign()") Back Campaign
+    hr
+    h4 Published Articles
+    hr
+
+
+    

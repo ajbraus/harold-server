@@ -16,7 +16,7 @@ var CampaignSchema = new Schema({
   , goal_in_cents : { type: Number }
   , img_url       : { type: String, trim: true }
   , video_url     : { type: String, trim: true }
-  , user_id       : { type: String }
+  // , author        : { type: Object }
 
   // has_many articles
   // belongs_to user

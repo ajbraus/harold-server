@@ -43,8 +43,15 @@ When to use sockets - POST comments, POST backing, POST articles
 
 WEBSITE
 Basic navigation and templating
-See articles
+header date
+create account
+mobile app plug
+topics
+Subscribe
+"Suggested for You"
+Click hole share buttons
+DONE See articles
 See campaigns
-  Nested routes /campaign/:id/article/:id
+  DONE Nested routes /campaign/:id/article/:id
 New articles Save and Publish 
 New campaigns Save and Publish
