@@ -1,4 +1,27 @@
 h1 Articles
-div(ng-repeat="article in articles")
-  a(href="/campaigns/{{article.campaign_id}}/articles/{{article._id}}")
-    {{article.title}}
+.row
+  .col-sm-4
+    div(ng-repeat="article in articles")
+      a(href="/campaigns/{{article.campaign_id}}/articles/{{article._id}}")
+        h4 {{article.title}}
+        img.image-responsive(ng-src="http://placehold.it/240x200")
+        p {{article.topic}}
+        //- p {{article.body}}
+      hr
+  .col-sm-4
+    div(ng-repeat="article in articles")
+      a(href="/campaigns/{{article.campaign_id}}/articles/{{article._id}}")
+        h4 {{article.title}}
+        img.image-responsive(ng-src="http://placehold.it/240x200")
+        p {{article.topic}}
+        //- p {{article.body}}
+      hr
+  .col-sm-4
+    div(ng-repeat="article in articles")
+      a(href="/campaigns/{{article.campaign_id}}/articles/{{article._id}}")
+        h4 {{article.title}}
+        img.image-responsive(ng-src="http://placehold.it/240x200")
+        p {{article.topic}}
+        //- p {{article.body}}
+      hr
+      
