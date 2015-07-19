@@ -50,12 +50,12 @@ angular.module('myApp.controllers', [])
 
   //ARTICLES
   .controller('ArticlesIndexCtrl', function ($scope, Article) {
-    $scope.articles = Article.query()
+    $scope.articles = Article.query();
   })
 
   .controller('ArticleShowCtrl', function ($scope, $routeParams, Article, Campaign) {
-    $scope.campaign = Campaign.get({ id: $routeParams.campaignId })
-    $scope.article = Article.get({ id: $routeParams.articleId })
+    $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
+    $scope.article = Article.get({ id: $routeParams.articleId });
   })
 
 
@@ -80,15 +80,19 @@ angular.module('myApp.controllers', [])
   })
 
   .controller('CampaignShowCtrl', function ($scope, $location, $routeParams, Campaign) {
+    console.log('service fetching campaign')
     $scope.campaign = Campaign.get({ id: $routeParams.campaignId })
   })
 
 
   // USERS
-  .controller('DashboardCtrl', function ($scope, AuthService) {
+  .controller('DashboardCtrl', function ($scope, $location, AuthService) {
     AuthService.CurrentUser().then(function(response) {
       $scope.user = response.data
     })
+    $scope.go = function(path) {
+      $location.path(path);
+    }
   })
 
   .controller('UserShowCtrl', function ($scope, $routeParams, AuthService, User) {

@@ -19,7 +19,8 @@ module.exports = function(app) {
 
   // CAMPAIGNS SHOW
   app.get('/api/campaigns/:id', function (req, res) {
-    Campaign.findOne(req.params.id).populate('user').exec(function(err, campaign) {
+    console.log('finding campaign')
+    Campaign.findById(req.params.id).populate('user').exec(function(err, campaign) {
       if (err) { return res.status(404).send(err) };
       res.status(200).json(campaign); // return all nerds in JSON format
     });

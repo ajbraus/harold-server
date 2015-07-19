@@ -65,7 +65,7 @@ block body
                     input(type='email', ng-model="reg_user.email", name='user', placeholder='Email' required)
                     input(type='password', ng-model="reg_user.password", name='pass', placeholder='Password' required)
                     input(type='password', ng-model="reg_user.password_confirm", name='pass', placeholder='Confirm Password' required)
-                    input.login(type='submit', name='login', value='Join')
+                    input.login.loginmodal-submit(type='submit', name='login', value='Join')
                   .login-help
                     a(href='#', data-toggle='modal', data-target='#login-modal') Login
   alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()") {{alert.msg}}

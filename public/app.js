@@ -12,7 +12,7 @@ angular.module('myApp', ['ngResource',
                          'myApp.controllers'])
 
   // .constant('HOST', 'http://localhost:1337/api') //DEV
-  .constant('HOST', 'http://harold-server.herokuapp.com') //PRODUCTION
+  .constant('HOST', 'http://harold-server.herokuapp.com/api') //PRODUCTION
   
   .config(['$routeProvider', '$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
     $routeProvider

@@ -4,23 +4,22 @@
     b by 
     a(href="/{{campaign.user.handle}}") {{campaign.user.name}}
 br
-.row
-  .col-sm-7.col-md-6.col-md-offset-1
-    img.image-responsive(ng-src="http://placehold.it/240x150", style="width:100%;")    
-    p {{campaign.summary}}
-    img.img-responsive.img-rounded(ng-src="http://placehold.it/240x240", style="width:100%;")
-  .col-sm-5.col-md-4
-    h1 123
-    p backers
-    h1 %{{campaign.percent_backed}} 
-    p Funded of {{campaign.goal}}  
-    progress(max="100" value="{{campaign.percent_backed}}")
-    h1 {{campaign.days_left}} days 
-    p left to back
-    a.btn.btn-lg.btn-success(href="#" ng-click="backCampaign()") Back Campaign
-    hr
-    h4 Published Articles
-    hr
+.col-sm-7.col-md-6.col-md-offset-1
+  img.image-responsive(ng-src="http://placehold.it/240x150", style="width:100%;")    
+  p {{campaign.summary}}
+  img.img-responsive.img-rounded(ng-src="http://placehold.it/240x240", style="width:100%;")
+.col-sm-5.col-md-4
+  h1 123
+  p backers
+  h1 %{{campaign.percent_backed}} 
+  p Funded of {{campaign.goal}}  
+  progress(max="100" value="{{campaign.percent_backed}}")
+  h1 {{campaign.days_left}} days 
+  p left to back
+  a.btn.btn-lg.btn-success(href="#" ng-click="backCampaign()") Back Campaign
+  hr
+  h4 Published Articles
+  hr
 
 
-    
+  

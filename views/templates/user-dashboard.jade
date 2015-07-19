@@ -1,25 +1,27 @@
-.row
-  .col-sm-4
-    h5{{user.name}}
-    a(href="/{{user.handle}}") Public Profile
-    p 
-      a(href="/profile/edit") Update Profile
-  .col-sm-8
-    h4 Campaigns
-    .pull-right
-      a(href="/campaigns/new").btn.btn-primary.btn-sm New Campaign
-    h5 Live
-    div(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
-      a(href="/campaigns/{{campaign._id}}") {{campaign.title}}
-    h5 Saved
-    div(ng-repeat="campaign in user.campaigns | filter:{published_at: 'null'}")
-      a(href="/campaigns/{{campaign._id}}") {{campaign.title}}
-    hr
-    h4 Articles
-    h5 Published
+.col-sm-4
+  h5 {{user.name}}
+  a(href="/{{user.handle}}") Public Profile
+  p 
+    a(href="/profile/edit") Update Profile
+.col-sm-8
+  .pull-right
+    a(href="/campaigns/new").btn.btn-primary.btn-sm New Campaign
+  h4 Campaigns
+  h5 Live
+  table.table.table-border.table-hover(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
+    tr
+      th Title
+      th 
+    tr(ng-click="go('/campaigns/' + campaign._id)")
+      td {{campaign.title}}
+      td 
+        a(href="/articles/new") New Article
+
     div(ng-repeat="article in user.articles | filter:{published_at: '!null'}")
       a(href="/articles/{{article._id}}") {{article.title}}
-    h5 Saved
     div(ng-repeat="article in user.articles | filter:{published_at: 'null'}")
       a(href="/articles/{{article._id}}") {{article.title}}
+  h5 Saved
+  div(ng-repeat="campaign in user.campaigns | filter:{published_at: 'null'}")
+    a(href="/campaigns/{{campaign._id}}") {{campaign.title}}
 
