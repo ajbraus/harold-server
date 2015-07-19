@@ -12,16 +12,20 @@ var CampaignSchema = new Schema({
   , title         : { type: String, required: true, trim: true }
   , summary       : { type: String, trim: true }
   , location      : { type: String, trim: true }
-  , topics        : { type: Array }
+  , category      : { type: String }
   , goal_in_cents : { type: Number }
   , img_url       : { type: String, trim: true }
   , video_url     : { type: String, trim: true }
-  // , author        : { type: Object }
+  
+  // REFERENCES
 
-  // has_many articles
-  // belongs_to user
-  // has_many backings
-  // has_many backers through backings
+  // populate('user')
+  , user          : { type: Schema.Types.ObjectId, ref: 'User' }
+
+  // populate('articles') DONE
+  
+  // populate('backings')
+  // populate('backers')
 });
 
 // VIRTUAL ATTRIBUTES
@@ -32,8 +36,8 @@ CampaignSchema.virtual('goal').get(function () {
   var goal = (num/100).toFixed(2);
   goal = "$" + goal.toString()
   return goal;
-}).set(function(name) {
-  var num = parseInt(goal)
+}).set(function(goal_in_dollars) {
+  var num = parseInt(goal_in_dollars)
   num = num * 100
   this.goal_in_cents = num
 });

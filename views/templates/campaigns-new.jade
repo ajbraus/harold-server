@@ -1,0 +1,27 @@
+h1 New Campaign
+
+form(ng-submit="createCampaign()")
+  .form-group
+    label Title
+    input.form-control(type='text', ng-model="campaign.title")
+  .form-group
+    label Location
+    input.form-control(type='text', ng-model="campaign.location")
+  .form-group
+    label Category
+    select.form-control(ng-model="campaign.category")
+  .form-group
+    label Dollar Goal Per Article
+    input.form-control(type='text', ng-model="campaign.goal", placeholder="$100")
+  .form-group
+    label Image Url
+    input.form-control(type='text', ng-model="campaign.img_url")
+  .form-group
+    label Video Url
+    input.form-control(type='text', ng-model="campaign.video_url")
+  .form-group
+    label Summary
+    textarea.form-control(ng-model="campaign.summary")
+  .text-right
+    //- button.btn.btn-default(type="submit") Save for Later
+    button.btn.btn-primary(type="submit") Publish

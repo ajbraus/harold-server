@@ -1,0 +1,35 @@
+
+.col-sm-4
+  img.img-responsive.img-rounded(ng-src="{{user.img_url}}")
+  h3 {{user.name}}
+  p.lead {{user.handle}}
+  hr
+  ul
+    li
+      i.icon.ion-home 
+      {{user.location}}
+    li
+      i.icon.ion-home 
+      {{user.location}}
+    li
+      i.icon.ion-clock 
+      | Joined on {{user.created_at}}
+  hr
+  .row
+    .col-xs-4
+      h1 500
+      small.text-muted Followers
+    .col-xs-4
+      h1 500
+      small.text-muted Backers
+    .col-xs-4
+      h1 500
+      small.text-muted Sharers
+.col-sm-8
+  h4 Live Campaigns
+  div(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
+    h2 {{campaign.title}}    
+  h4 Published Articles
+
+
+

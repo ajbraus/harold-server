@@ -14,8 +14,16 @@ angular.module('myApp.services', [])
   .factory('User', function ($resource, HOST) {
     return $resource(HOST + '/users/:id', { id: '@id' })
   })
-  .factory('AuthService', function (User) {
-    // currentUser
+
+  .factory('AuthService', function (User, $http) {
+    return {
+      CurrentUser: function() {
+        return $http.get('/api/me');
+      },
+      updateCurrentUser: function(data) {
+        return $http.put('/api/me', data);
+      }
+    };
   })
 
   .factory('Alert', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
@@ -61,4 +69,7 @@ angular.module('myApp.services', [])
     socket.forward('broadcast.vote_up');
     socket.forward('broadcast.vote_down');
     return socket
-  }]);
+  }])
+
+
+  ;

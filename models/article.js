@@ -15,8 +15,13 @@ var ArticleSchema = new Schema({
   , img_url       : { type: String, required: true, trim: true }
 
   // REFERENCES
-  , campaign_id   : { type: String }
-  , author_id     : { type: String }
+
+  //populate('author')
+  , author        : { type: Schema.Types.ObjectId, ref: 'User', required: true }
+
+  //populate('campaign')
+  , campaign      : { type: Schema.Types.ObjectId, ref: 'Campaign' }
+  
 });
 
 // BEFORE/AFTER FILTER

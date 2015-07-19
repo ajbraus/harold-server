@@ -1,5 +1,5 @@
 /*
- * articles.js
+ * ARTICLE API ROUTES
  */
 
 var Article = require('../models/article');

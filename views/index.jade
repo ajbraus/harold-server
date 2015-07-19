@@ -6,59 +6,42 @@ block body
           // Brand and toggle get grouped for better mobile display
           .navbar-header
             button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-              span.sr-only Toggle navigation
-              |         
-              span.icon-bar
-              |         
-              span.icon-bar
-              |         
-              span.icon-bar
-            |       
+              span.sr-only Toggle navigation         
+              span.icon-bar         
+              span.icon-bar         
+              span.icon-bar       
             a.navbar-brand(href='/') Harold
           // Collect the nav links, forms, and other content for toggling
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             ul.nav.navbar-nav
               li.active
-                a(href='#')
-                  | Start 
-                  span.sr-only (current)
-              |         
+                a(href='#') Start 
+                  span.sr-only (current)         
               li
-                a(href='#') Discover
-              |         
-            |          
+                a(href='#') Discover                   
             form.navbar-form.navbar-left(role='search')
               .form-group
-                input.form-control(type='text', placeholder='Search')
-              |         
-              button.btn.btn-default(type='submit') Submit
-            |   
+                input.form-control(type='text', placeholder='Search')         
+              button.btn.btn-default(type='submit') Submit   
             ul.nav.navbar-nav.navbar-right 
-              li(ng-hide="isAuthenticated()")
-                a(href='#', data-toggle='modal', data-target='#signup-modal') Join
-              |   
-              li(ng-hide="isAuthenticated()")
-                a(href='#', data-toggle='modal', data-target='#login-modal') Login
-              |         
-              li.dropdown(ng-show="isAuthenticated()")
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                  | Dropdown 
-                  span.caret
-                |           
+              li(ng-cloak ng-hide="isAuthenticated()")
+                a#join-link(href='#', data-toggle='modal', data-target='#signup-modal') Join   
+              li(ng-cloak ng-hide="isAuthenticated()")
+                a#login-link(href='#', data-toggle='modal', data-target='#login-modal') Login
+              li.dropdown#menu-dropdown(ng-cloak ng-show="isAuthenticated()")
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')  
+                  span.caret           
                 ul.dropdown-menu
                   li
-                    a(href='#') Action
-                  |             
+                    a#new-campaign(href="/campaigns/new") New Campaign
                   li
-                    a(href='#') Another action
-                  |             
+                    a#dashboard(href="/dashboard") Dashboard            
                   li
-                    a(href='#') Something else here
-                  |             
-                  li.divider(role='separator')
-                  |             
+                    a#edit-profile(href="/profile/edit") Edit Profile            
+                  li.divider(role='separator')             
                   li
-                    a(href='#') Separated link
+                    a#logout-link(href='#' ng-click="logout()") Logout
+
             #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
               .modal-dialog
                 .loginmodal-container
@@ -66,12 +49,11 @@ block body
                   .login-help.text-muted.text-center Welcome Back
                   br
                   form(ng-submit="login()")
-                    input(type='email', ng-model="auth_user.email", name='user', placeholder='Email' required)
-                    input(type='password', ng-model="auth_user.password", name='pass', placeholder='Password' required)
+                    input(type='email', ng-model="login_user.email", name='user', placeholder='Email' required)
+                    input(type='password', ng-model="login_user.password", name='pass', placeholder='Password' required)
                     input.login.loginmodal-submit(type='submit', name='login', value='Login') 
                   .login-help
-                    a(href='#', data-toggle='modal', data-target='#signup-modal') Join
-                    |  - 
+                    a(href='#', data-toggle='modal', data-target='#signup-modal') Join  - 
                     a(href='#') Forgot Password
             #signup-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
               .modal-dialog
@@ -80,11 +62,11 @@ block body
                   .login-help.text-muted.text-center Personalized Crowdfunded News
                   br   
                   form(ng-submit="signup()")
-                    input(type='email', ng-model="auth_user.email", name='user', placeholder='Email' required)
-                    input(type='password', ng-model="auth_user.password", name='pass', placeholder='Password' required)
-                    input(type='password', ng-model="auth_user.password_confirm", name='pass', placeholder='Confirm Password' required)
-                    input.login.loginmodal-submit(type='submit', name='login', value='Join')
+                    input(type='email', ng-model="reg_user.email", name='user', placeholder='Email' required)
+                    input(type='password', ng-model="reg_user.password", name='pass', placeholder='Password' required)
+                    input(type='password', ng-model="reg_user.password_confirm", name='pass', placeholder='Confirm Password' required)
+                    input.login(type='submit', name='login', value='Join')
                   .login-help
                     a(href='#', data-toggle='modal', data-target='#login-modal') Login
   alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()") {{alert.msg}}
-  .container(ng-view)
+  div(ng-view)

@@ -1,11 +1,15 @@
 /*PUT YOUR STYLES HERE*/
 
 body {
-  background:#eee;
+  background:white;
 }
 
 .container {
   background: white;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
 
 
@@ -141,4 +145,12 @@ color:rgb(244, 244, 244);
   background-color: red;
   border-color: red;
   color: rgb(244, 244, 244);
+}
+
+ul li {
+  list-style: none;
+}
+
+ul {
+  padding:0;
 }

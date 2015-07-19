@@ -7,22 +7,53 @@ DONE add backing modal and controller
 Finish tests for articles#index and campaigns#index
 Make tests for articles#create and campaings#create
 
-New User - Add Passport Email, Twitter, FB
+DONE Logout
+DONE salt passwords
+DONE current_user
+DONE populate campaigns to user
+DONE new campaign saves to user
+DONE user-show at '/handle'
+
+show user 
+new article
+campaign populate articles
+
+full_name pattern not working
+
+New Campaign - kickstarter wizard
+  authorization - only logged in can create new campaign
+  category dropdown select
+  save for later vs. publish
+  wizard
+
+
+Add Passport Email, Twitter, FB
   onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
 
   satellizer-local
-    DONE register
-      - go to /me
-      - Authorized to edit
+    register
+      - salt passwords
+      - redirect to /me
+      - Authorized to edit - if (user == current_user)
     login
     confirm email
+
   satellizer-facebook
+    - add email & password
   satellizer-twitter
+    - add email & password
 
-New Campaign
-New Article
-New Backer
+Style GlobalAlerts
+New Article - medium editor
+New Backer - Michael
 
+add tags
+
+subscribe
+one time back
+share backers
+
+like rewards
 
 invite only
 onboard like twitter & tumblr

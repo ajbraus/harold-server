@@ -51,6 +51,7 @@ app.get('/templates/:name', routes.templates);
 require('./routes/articles')(app);
 require('./routes/campaigns')(app);
 require('./routes/auth')(app);
+require('./routes/users')(app);
 
 // REDIRECT ALL OTHER PATHS TO INDEX (HTML5 history)
 app.get('*', routes.index);

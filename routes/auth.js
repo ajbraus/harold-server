@@ -2,49 +2,14 @@
  * auth.js
  */
 
-var bcrypt = require('bcryptjs');
-var jwt = require('jwt-simple');
-var path = require('path');
-var qs = require('querystring');
-var moment = require('moment'); 
-var config = require('../config')
-var _ = require('lodash')
-
-function ensureAuthenticated(req, res, next) {
- if (!req.headers.authorization) {
-   return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
- }
- var token = req.headers.authorization.split(' ')[1];
-
- var payload = null;
- try {
-   payload = jwt.decode(token, config.TOKEN_SECRET);
- }
- catch (err) {
-   return res.status(401).send({ message: err.message });
- }
-
- if (payload.exp <= moment().unix()) {
-   return res.status(401).send({ message: 'Token has expired' });
- }
- req.user = payload.sub;
- next();
-}
-
-function createJWT(user) {
-  var payload = {
-    sub: user._id,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
-  };
-  return jwt.encode(payload, config.TOKEN_SECRET);
-}
-
 var User = require('../models/user')
+var authHelpers = require('./auth-helpers')
 
 module.exports = function(app) {
   app.post('/api/auth/login', function(req, res) {
+    console.log("logging in")
     User.findOne({ email: req.body.email }, '+password', function(err, user) {
+      console.log(user)
       if (!user) {
         return res.status(401).send({ message: 'Wrong email and/or password' });
       }
@@ -52,7 +17,7 @@ module.exports = function(app) {
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email and/or password' });
         }
-        res.send({ token: createJWT(user) });
+        res.send({ token: authHelpers.createJWT(user) });
       });
     });
   });
@@ -73,7 +38,7 @@ module.exports = function(app) {
         if (err) {
           res.status(400).send({ message: "Validation error saving user" });  
         } else {
-          res.status(201).send({ token: createJWT(user), _id: user._id });  
+          res.status(201).send({ token: authHelpers.createJWT(user), _id: user._id });  
         }
       });
     });
@@ -121,7 +86,7 @@ module.exports = function(app) {
               user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
               user.displayName = user.displayName || profile.name;
               user.save(function() {
-                var token = createJWT(user);
+                var token = authHelpers.createJWT(user);
                 res.send({ token: token });
               });
             });
@@ -130,7 +95,7 @@ module.exports = function(app) {
           // Step 3b. Create a new user account or return an existing one.
           User.findOne({ facebook: profile.id }, function(err, existingUser) {
             if (existingUser) {
-              var token = createJWT(existingUser);
+              var token = authHelpers.createJWT(existingUser);
               return res.send({ token: token });
             }
             var user = new User();
@@ -138,7 +103,7 @@ module.exports = function(app) {
             user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
             user.displayName = profile.name;
             user.save(function() {
-              var token = createJWT(user);
+              var token = authHelpers.createJWT(user);
               res.send({ token: token });
             });
           });
@@ -219,7 +184,7 @@ module.exports = function(app) {
                 user.displayName = user.displayName || profile.name;
                 user.picture = user.picture || profile.profile_image_url.replace('_normal', '');
                 user.save(function(err) {
-                  res.send({ token: createJWT(user) });
+                  res.send({ token: authHelpers.createJWT(user) });
                 });
               });
             });
@@ -227,7 +192,7 @@ module.exports = function(app) {
             // Step 5b. Create a new user account or return an existing one.
             User.findOne({ twitter: profile.id }, function(err, existingUser) {
               if (existingUser) {
-                return res.send({ token: createJWT(existingUser) });
+                return res.send({ token: authHelpers.createJWT(existingUser) });
               }
 
               var user = new User();
@@ -235,7 +200,7 @@ module.exports = function(app) {
               user.displayName = profile.name;
               user.picture = profile.profile_image_url.replace('_normal', '');
               user.save(function() {
-                res.send({ token: createJWT(user) });
+                res.send({ token: authHelpers.createJWT(user) });
               });
             });
           }
@@ -249,28 +214,29 @@ module.exports = function(app) {
    | GET /api/me
    |--------------------------------------------------------------------------
    */
-  app.get('/api/me', ensureAuthenticated, function(req, res) {
-    User.findById(req.user, function(err, user) {
-      res.send(user);
+  app.get('/api/me', authHelpers.ensureAuthenticated, function(req, res) {
+    User.findById(req.user).populate('campaigns').exec(function(err, user) {
+      res.json(user);
     });
   });
-
 
   /*
    |--------------------------------------------------------------------------
    | PUT /api/me
    |--------------------------------------------------------------------------
    */
-  app.put('/api/me', ensureAuthenticated, function(req, res) {
-    User.findById(req.user, function(err, user) {
+  app.put('/api/me', authHelpers.ensureAuthenticated, function(req, res) {
+    console.log(req.user)
+    console.log(req.body)
+    User.findByIdAndUpdate(req.user, req.body, function(err, user) {
+      console.log(user)
       if (!user) {
         return res.status(400).send({ message: 'User not found' });
+      } else if (err) {
+        return res.status(400).send({ message: 'There was a problem updating your profile' });
+      } else {
+        return res.status(200).send(user);
       }
-      user.displayName = req.body.displayName || user.displayName;
-      user.email = req.body.email || user.email;
-      user.save(function(err) {
-        res.status(200).end();
-      });
     });
   });
 }
