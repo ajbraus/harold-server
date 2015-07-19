@@ -5,9 +5,9 @@
     a(href="/{{campaign.user.handle}}") {{campaign.user.name}}
 br
 .col-sm-7.col-md-6.col-md-offset-1
-  img.image-responsive(ng-src="http://placehold.it/240x150", style="width:100%;")    
+  img.img-responsive(ng-src="{{campaign.img_url}}", style="width:100%;")  
   p {{campaign.summary}}
-  img.img-responsive.img-rounded(ng-src="http://placehold.it/240x240", style="width:100%;")
+  img.image-responsive(ng-src="http://placehold.it/240x150", style="width:100%;")    
 .col-sm-5.col-md-4
   h1 123
   p backers

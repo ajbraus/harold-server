@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   // CAMPAIGNS INDEX
   app.get('/api/campaigns', function (req, res) {
-    Campaign.find().sort('-created_at').populate('user', 'name').exec(function(err, campaigns) {
+    Campaign.find().sort('-_id').populate('user', '_id name').exec(function(err, campaigns) {
       if (err) { return res.status(404).send(err) };
       
       res.status(200).json(campaigns); // return all nerds in JSON format

@@ -22,7 +22,7 @@ block body
               form.navbar-form.navbar-left(role='search' ng-submit="newSearch()")
                 .form-group
                   input.form-control.search-input(type='text' ng-model="search.query" placeholder='Search' required) 
-                button.btn.btn-default(type='submit') 
+                button.btn.btn-link(type='submit') 
                   i.icon.ion-search   
               li(ng-cloak ng-hide="isAuthenticated()")
                 a#join-link(href='#', data-toggle='modal', data-target='#signup-modal') Join   
@@ -68,5 +68,5 @@ block body
                     input.login.loginmodal-submit(type='submit', name='login', value='Join')
                   .login-help
                     a(href='#', data-toggle='modal', data-target='#login-modal') Login
-  alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()") {{alert.msg}}
+  alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()" ng-cloak) {{alert.msg}}
   div(ng-view)

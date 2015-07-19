@@ -1,3 +1,7 @@
-h1 Campaigns
-div(ng-repeat="campaign in campaigns")
-  {{campaign.title}}
+.col-sm-4
+  ng-include(src="'templates/_campaign.jade'", ng-repeat="campaign in campaigns")
+.col-sm-8
+  div(ng-repeat="campaign in campaigns")
+    img.img-responsive(ng-src="{{campaign.img_url}}")
+    h4 {{campaign.title}}
+

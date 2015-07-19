@@ -30,9 +30,27 @@ homepage
   show date and time
   add topics bar
 
-show category
+category#show
+
+Sort out public profile and dashboard
+  follow Medium:
+    dashboard = '/me' 
+    public profile = '/@ajbraus'
+    "Drafts", "Public", "Unlisted"
+    If you back you get access to unlisted articles
+    "Last edited 2 months ago" (234 words) so far
+
+  campaigns, live, not live, current funding, graph of funding, paid to date, shares, reach, followers, backers, sharebackers
+  articles, drafts, published
+
 
 seed db with rss feed . . . 
+  http://news.google.com/?output=rss
+    - top news
+    - tech news
+    - satirical news
+
+campaigns video embed
 
 bugs
 error handling

@@ -165,12 +165,8 @@ ul {
 }
 
 .form-control:focus{
-    outline-style: none !important;
-    outline: none !important;
-    /*outline: 0px !important;*/
-    -webkit-appearance:none;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    border:none !important;
+  outline: 0px !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
