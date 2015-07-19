@@ -1,19 +1,18 @@
-.row
-  .col-sm-4.col-md-3.col-md-offset-1.col-lg-offset-2
-    a(href="/campaigns/{{campaign._id}}")
-      img.image-responsive(ng-src="http://placehold.it/240x240", style="width:100%;")
-      h4 {{campaign.title}}
-      p {{campaign.days_left}} days left
-      p %{{campaign.percent_backed}} percent of {{campaign.goal}}
-      progress(max="100" value="{{campaign.percent_backed}}")
-    hr
-    h5 Campaigns Suggested for You
-    hr
-    h5 Articles Suggested for You
-  .col-sm-8.col-md-6.col-lg-5
-    img.image-responsive(ng-src="http://placehold.it/240x180", style="width:100%;")
-    .text-right
-      a(href='#').btn Share on Twitter
-      a(href='#').btn Share on Facebook
-    h3 {{article.title}}
-    p {{article.body}}
+.col-sm-4.col-md-3.col-md-offset-1.col-lg-offset-2
+  a(href="/campaigns/{{campaign._id}}")
+    img.image-responsive(ng-src="{{campaign.img_url}}", style="width:100%;")
+    h4 {{campaign.title}}
+    p {{campaign.days_left}} days left
+    p %{{campaign.percent_backed}} percent of {{campaign.goal}}
+    progress(max="100" value="{{campaign.percent_backed}}")
+  hr
+  h5 Campaigns Suggested for You
+  hr
+  h5 Articles Suggested for You
+.col-sm-7.col-md-6.col-lg-5
+  img.image-responsive(ng-src="{{article.img_url}}", style="width:100%;")
+  .text-right
+    a(href='#').btn Share on Twitter
+    a(href='#').btn Share on Facebook
+  h3 {{article.title}}
+  p {{article.body}}

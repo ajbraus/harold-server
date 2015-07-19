@@ -3,6 +3,9 @@
  */
 
 var Article = require('../models/article');
+var User = require('../models/user');
+var Campaign = require('../models/campaign');
+var authHelpers = require('./auth-helpers')
 
 module.exports = function(app) {
   // ARTICLES INDEX
@@ -15,16 +18,23 @@ module.exports = function(app) {
   });
 
   // CREATE
-  app.post('/api/articles', function (req, res) {
-    var article = new Article({
-        body: req.body.body
-    });
+  app.post('/api/articles', authHelpers.ensureAuthenticated, function (req, res) {
+    console.log(req.body)
+    console.log(req.user)
+    var article = new Article(req.body)
+    article.author = req.user
     console.log(article);
+
     article.save(function (err, article) {
       console.log('article saved')
-      if (err) { return res.send(err) };
-      res.status(201); 
-      io.sockets.emit('article.published', article);
+      Campaign.findById(article.campaign, function(err, campaign) {
+        if (err) { return res.send(err) };
+        campaign.articles.push(article);
+        campaign.save(function(err) {
+          if (err) { return res.send(err) };
+          res.status(201).json(article)
+        });
+      });
     });
   });
 

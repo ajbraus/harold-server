@@ -5,7 +5,19 @@
 'use strict';
 
 angular.module('myApp.controllers', [])
-  .controller('MainCtrl', function ($scope, $auth, Alert) {
+  .controller('MainCtrl', function ($scope, $auth, $http, HOST, Alert) {
+    $scope.search = {}
+    $scope.newSearch = function() {
+      console.log($scope.search)
+      $http.post(HOST + '/search', $scope.search)
+        .success(function(data) {
+          console.log(data)
+        })
+        .error(function(data){
+
+        })
+    }
+
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
@@ -56,6 +68,25 @@ angular.module('myApp.controllers', [])
   .controller('ArticleShowCtrl', function ($scope, $routeParams, Article, Campaign) {
     $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
     $scope.article = Article.get({ id: $routeParams.articleId });
+  })
+
+  .controller('NewArticleCtrl', function ($scope, $location, $routeParams, Article, Campaign) {
+    $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
+
+    $scope.article = {
+      campaign: $routeParams.campaignId
+    };
+
+    $scope.createArticle = function() {
+      Article.save($scope.article, 
+        function(data) {
+          console.log(data)
+          $location.path('/campaigns/' + data.campaign + '/articles/' + data._id);
+        },
+        function(data) {
+
+        });
+    }
   })
 
 

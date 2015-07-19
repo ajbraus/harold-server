@@ -8,20 +8,7 @@
     a(href="/campaigns/new").btn.btn-primary.btn-sm New Campaign
   h4 Campaigns
   h5 Live
-  table.table.table-border.table-hover(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
-    tr
-      th Title
-      th 
-    tr(ng-click="go('/campaigns/' + campaign._id)")
-      td {{campaign.title}}
-      td 
-        a(href="/articles/new") New Article
-
-    div(ng-repeat="article in user.articles | filter:{published_at: '!null'}")
-      a(href="/articles/{{article._id}}") {{article.title}}
-    div(ng-repeat="article in user.articles | filter:{published_at: 'null'}")
-      a(href="/articles/{{article._id}}") {{article.title}}
+  ng-include(src="'templates/_campaigns-table.jade'" ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
   h5 Saved
-  div(ng-repeat="campaign in user.campaigns | filter:{published_at: 'null'}")
-    a(href="/campaigns/{{campaign._id}}") {{campaign.title}}
+  ng-include(src="'templates/_campaigns-table.jade'" ng-repeat="campaign in user.campaigns | filter:{published_at: 'null'}")
 

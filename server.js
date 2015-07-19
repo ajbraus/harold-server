@@ -52,6 +52,7 @@ require('./routes/articles')(app);
 require('./routes/campaigns')(app);
 require('./routes/auth')(app);
 require('./routes/users')(app);
+require('./routes/search')(app);
 
 // REDIRECT ALL OTHER PATHS TO INDEX (HTML5 history)
 app.get('*', routes.index);

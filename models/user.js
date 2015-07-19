@@ -26,8 +26,7 @@ var UserSchema = new Schema({
 
   //REFERENCES
 
-  //populate('articles')
-  , articles     : [{ type: Schema.Types.ObjectId, ref: 'Article' }]
+  //user.articles = Article.find({ author: user._id });
   //populate('campaigns')
   , campaigns     : [{ type: Schema.Types.ObjectId, ref: 'Campaign' }]
 });

@@ -19,7 +19,9 @@ br
   a.btn.btn-lg.btn-success(href="#" ng-click="backCampaign()") Back Campaign
   hr
   h4 Published Articles
+  ng-include(src="'templates/_article.jade'" ng-repeat="article in campaign.articles")
   hr
+
 
 
   

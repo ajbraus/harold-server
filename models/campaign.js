@@ -23,7 +23,8 @@ var CampaignSchema = new Schema({
   , user          : { type: Schema.Types.ObjectId, ref: 'User' }
 
   // populate('articles') DONE
-  
+  , articles      : [{ type: Schema.Types.ObjectId, ref: 'Article' }]
+
   // populate('backings')
   // populate('backers')
 });

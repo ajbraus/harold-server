@@ -10,9 +10,8 @@ var ArticleSchema = new Schema({
   , updated_at    : { type: Date }
   , published_at  : { type: Date }
   , title         : { type: String, required: true, trim: true }
-  , topic         : { type: String, required: true, trim: true }
-  , body          : { type: String, required: true, trim: true }
-  , img_url       : { type: String, required: true, trim: true }
+  , body          : { type: String, trim: true }
+  , img_url       : { type: String, trim: true }
 
   // REFERENCES
 

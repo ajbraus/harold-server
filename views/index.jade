@@ -14,16 +14,16 @@ block body
           // Collect the nav links, forms, and other content for toggling
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             ul.nav.navbar-nav
-              li.active
-                a(href='#') Start 
-                  span.sr-only (current)         
               li
-                a(href='#') Discover                   
-            form.navbar-form.navbar-left(role='search')
-              .form-group
-                input.form-control(type='text', placeholder='Search')         
-              button.btn.btn-default(type='submit') Submit   
+                a(href='/') Front Page
+              li
+                a(href='/campaigns') Discover
             ul.nav.navbar-nav.navbar-right 
+              form.navbar-form.navbar-left(role='search' ng-submit="newSearch()")
+                .form-group
+                  input.form-control.search-input(type='text' ng-model="search.query" placeholder='Search' required) 
+                button.btn.btn-default(type='submit') 
+                  i.icon.ion-search   
               li(ng-cloak ng-hide="isAuthenticated()")
                 a#join-link(href='#', data-toggle='modal', data-target='#signup-modal') Join   
               li(ng-cloak ng-hide="isAuthenticated()")

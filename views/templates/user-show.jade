@@ -1,5 +1,5 @@
 
-.col-sm-4
+.col-sm-4.col-lg-3.col-lg-offset-1
   img.img-responsive.img-rounded(ng-src="{{user.img_url}}")
   h3 {{user.name}}
   p.lead {{user.handle}}
@@ -28,7 +28,8 @@
 .col-sm-8
   h4 Live Campaigns
   div(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
-    h2 {{campaign.title}}    
+    h2 {{campaign.title}}
+    ng-include(src="'templates/_article.jade'", ng-repeat="article in campaign.articles")
   h4 Published Articles
 
 

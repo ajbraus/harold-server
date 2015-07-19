@@ -4,9 +4,6 @@ DONE remove 'id' attribute from articles
 DONE add user model with unsalted password
 DONE add backing modal and controller
 
-Finish tests for articles#index and campaigns#index
-Make tests for articles#create and campaings#create
-
 DONE Logout
 DONE salt passwords
 DONE current_user
@@ -14,11 +11,33 @@ DONE populate campaigns to user
 DONE new campaign saves to user
 DONE user-show at '/handle'
 
-show user 
-new article
-campaign populate articles
+DONE show user 
+DONE new article
+DONE campaign populate articles
+DONE article populate campaign
 
+Tests 
+  signup
+  login
+  articles#index and campaigns#index
+  articles#create and campaings#create
+  campaign#index
+  campaign#create
+
+send emails - emailjs or express-mailer. . .
+
+homepage 
+  show date and time
+  add topics bar
+
+show category
+
+seed db with rss feed . . . 
+
+bugs
+error handling
 full_name pattern not working
+
 
 New Campaign - kickstarter wizard
   authorization - only logged in can create new campaign
@@ -31,11 +50,6 @@ Add Passport Email, Twitter, FB
   onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
 
   satellizer-local
-    register
-      - salt passwords
-      - redirect to /me
-      - Authorized to edit - if (user == current_user)
-    login
     confirm email
 
   satellizer-facebook
@@ -47,7 +61,7 @@ Style GlobalAlerts
 New Article - medium editor
 New Backer - Michael
 
-add tags
+add tags ('topics')
 
 subscribe
 one time back
@@ -91,3 +105,35 @@ New campaigns Save and Publish
 
 DONE Basic navigation and templating
 DONE See articles
+
+
+
+
+
+search
+  created a weighted text index
+  DONE db.articles.createIndex(
+                       {
+                         title: "text",
+                         body: "text"
+                       },
+                       {
+                         weights: {
+                                    title: 5
+                                  },
+                         name: "ArticleIndex"
+                       }
+                     )
+  db.campaigns.createIndex(
+                       {
+                         title: "text",
+                         category: "text",
+                         body: "text"
+                       },
+                       {
+                         weights: {
+                                    title: 5
+                                  },
+                         name: "CampaignIndex"
+                       }
+                     )

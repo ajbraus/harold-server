@@ -4,6 +4,7 @@
 
 
 var User = require('../models/user');
+var Campaign = require('../models/campaign');
 
 module.exports = function(app) {
  // SHOW
@@ -13,7 +14,7 @@ module.exports = function(app) {
     .populate('campaigns').exec(function(err, user) {
       Campaign.populate(user.campaigns, { path:'articles' }, function(err, data) {
         if (err) { return res.status(404).send(err) };
-        res.status(200).json(data); 
+        res.status(200).json(user); 
       });
     });
  });

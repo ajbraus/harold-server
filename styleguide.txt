@@ -1,0 +1,2 @@
+Campaign is a large media object like an album on spotify
+Article is either just a title with metadata or thumbnail image with title and metadata

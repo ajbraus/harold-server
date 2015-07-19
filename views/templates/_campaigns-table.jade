@@ -1,0 +1,22 @@
+table.table
+  tr
+    td 
+      a(href="/campaigns/{{campaign._id}}") {{campaign.title}}
+    td
+      a(href="/campaigns/edit/{{campaign._id}}") Edit
+    td 
+      a(href="/campaigns/{{campaign._id}}/articles/new") New Article
+  tr
+    table
+      tr
+        th Title
+        th
+        th
+      tr(ng-repeat="article in user.articles | filter:{published_at: '!null'}")
+        td {{article.title}}
+        td
+        td
+      tr(ng-repeat="article in user.articles | filter:{published_at: 'null'}")
+        td {{article.title}}
+        td
+        td

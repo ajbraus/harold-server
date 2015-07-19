@@ -1,0 +1,23 @@
+.col-sm-3
+  {{campaign.title}}
+.col-sm-7.col-sm-offset-1
+  legend New Article
+  form(ng-submit="createArticle()")
+    .form-group
+      label Title
+      input.form-control(type='text', ng-model="article.title")
+    .form-group
+      label Location
+      input.form-control(type='text', ng-model="article.location")
+    .form-group
+      label Image Url
+      input.form-control(type='text', ng-model="article.img_url")
+    .form-group
+      label Video Url
+      input.form-control(type='text', ng-model="article.video_url")
+    .form-group
+      label Body
+      textarea.form-control(ng-model="article.body")
+    .text-right
+      //- button.btn.btn-default(type="submit") Save for Later
+      button.btn.btn-primary(type="submit") Publish

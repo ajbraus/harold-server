@@ -21,6 +21,10 @@ angular.module('myApp', ['ngResource',
         templateUrl: 'templates/articles-index'
       , controller: 'ArticlesIndexCtrl'
       })
+      .when('/campaigns/:campaignId/articles/new', {
+        templateUrl: 'templates/articles-new'
+      , controller: 'NewArticleCtrl'
+      })
       .when('/campaigns/:campaignId/articles/:articleId', {
         templateUrl: 'templates/articles-show'
       , controller: 'ArticleShowCtrl'
@@ -38,6 +42,15 @@ angular.module('myApp', ['ngResource',
       .when('/campaigns/:campaignId', {
         templateUrl: 'templates/campaigns-show'
       , controller: 'CampaignShowCtrl'
+      })
+
+      // BROWSE
+      .when('/search', {
+        templateUrl: 'templates/search-index'
+      , controller: 'SearchCtrl'
+
+      // query with param
+      // see articles and campaigns that match that query
       })
 
       //USERS
