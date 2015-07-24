@@ -1,7 +1,12 @@
-.col-sm-4
-  ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
-.col-sm-4
-  ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
-.col-sm-4
-  ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
-    
+.container
+  .row
+    .col-lg-3.col-md-4.col-sm-4
+      ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
+    .col-lg-3.col-md-4.col-sm-4
+      ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
+    .col-lg-3.col-md-4.col-sm-4
+      ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
+    .col-lg-3.md-hidden.sm-hidden
+      ng-include(src="'templates/_article.jade'", ng-repeat="article in articles")
+        
+        

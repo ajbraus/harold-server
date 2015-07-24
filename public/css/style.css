@@ -4,10 +4,6 @@ body {
   background:white;
 }
 
-.container {
-  background: white;
-}
-
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }

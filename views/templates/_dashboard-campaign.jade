@@ -7,10 +7,11 @@ ul.list-group
       .col-xs-9
         a(href="/campaigns/{{campaign._id}}")
           h2 {{campaign.title}}
-        .text-muted {{campaign.articles.length}} Articles
+        .text-muted {{campaign.articles.length}} Articles | 30 Backers | 110% of $300 Backed ($330)
         .btn-toolbar.text-right
           a.btn.btn-default(href="/campaigns/edit/{{campaign._id}}") Edit
           a.btn.btn-primary(href="/campaigns/{{campaign._id}}/articles/new") New Article
+  li.list-group-item.active Published
   li.list-group-item.clearfix(ng-repeat="article in campaign.articles | filter:{published_at: '!null'}")
     a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
       .col-xs-10
@@ -18,6 +19,7 @@ ul.list-group
         .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
       .col-xs-2
         img.img-responsive(ng-src="{{article.img_url}}")
+  li.list-group-item.active Drafts
   li.list-group-item.clearfix(ng-repeat="article in campaign.articles | filter:{published_at: 'null'}")
     a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
       h4 {{article.title}}    

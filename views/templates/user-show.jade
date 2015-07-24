@@ -25,10 +25,11 @@
     .col-xs-4
       h1 500
       small.text-muted Sharers
-.col-sm-8
-  h4 Live Campaigns
+.col-sm-8.col-lg-7
+  h1 {{user.name}}'s Campaigns
   div(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
-    h2 {{campaign.title}}
+    a(href="/campaigns/{{campaign._id}}")
+      h2 {{campaign.title}}
     ng-include(src="'templates/_article.jade'", ng-repeat="article in campaign.articles")
   h4 Published Articles
 

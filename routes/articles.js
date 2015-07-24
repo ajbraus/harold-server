@@ -29,7 +29,7 @@ module.exports = function(app) {
       console.log('article saved')
       Campaign.findById(article.campaign, function(err, campaign) {
         if (err) { return res.send(err) };
-        campaign.articles.push(article);
+        campaign.articles.unshift(article);
         campaign.save(function(err) {
           if (err) { return res.send(err) };
           res.status(201).json(article)

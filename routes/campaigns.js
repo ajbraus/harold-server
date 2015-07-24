@@ -37,7 +37,7 @@ module.exports = function(app) {
 
       User.findById(req.user, function(err, user) {
         if (err) { return res.send(err) };
-        user.campaigns.push(campaign) 
+        user.campaigns.unshift(campaign) 
         user.save(function(err) {
           if (err) { return res.send(err) };
           res.status(201).json(campaign);

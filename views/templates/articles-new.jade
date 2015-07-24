@@ -1,8 +1,8 @@
 .container
   .row
-    .col-sm-5.col-md-4.col-md-offset-1.col-lg-offset-0
+    .col-sm-2.col-md-3
       {{campaign.title}}
-    .col-md-7.col-sm-8.col-lg-6
+    .col-sm-8.col-md-6
       legend New Article
       form(ng-submit="createArticle()")
         .form-group
@@ -21,5 +21,6 @@
           label Body
           textarea.form-control(ng-model="article.body")
         .text-right
-          //- button.btn.btn-default(type="submit") Save for Later
-          button.btn.btn-primary(type="submit") Publish
+          .btn-toolbar
+            button.btn.btn-primary(type="submit") Publish
+            button.btn.btn-default(type="submit") Save for Later

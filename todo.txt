@@ -1,5 +1,12 @@
 Articles#create
+medium editor
 Article.pre('save') count words and save
+display articles by published_at date or updated_at date
+
+dashboard
+  stricter divide UX of backed, commented, starred, followed vs. draft & created
+    Personalized Front Page
+    Campaigns Dashboard
 
 Tests 
   signup
@@ -9,13 +16,10 @@ Tests
   campaign#index
   campaign#create
 
-
-
 send emails - emailjs or express-mailer. . .
 
 homepage 
-  show date and time
-  add topics bar
+  show date and time and topics bar
 
 category#show
 

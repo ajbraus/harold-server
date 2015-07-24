@@ -5,21 +5,25 @@
       nav
         ul.nav.lead
           li 
-            h4 Campaigns
+            h4 Favorites
           li
             a(href="/profile/edit")
               span.badge 6 
               |  Followed 
           li
             a(href="/profile/edit") 
-              span.badge 6 
+              span.badge 6
               |  Backed
+          li 
+            h4 Campaign
           li
             a(href="/profile/edit") 
-              span.badge 6 
-              |  Created  
-
-          li 
+              span.badge {{(user.campaigns | filter:{ published_at: 'null' }).length}}
+              |  Published
+          li
+            a(href="/profile/edit") 
+              span.badge {{(user.campaigns | filter:{ published_at: '!null' }).length}}
+              |  Draft  
           li 
             h4 Activity & Messages
           li
@@ -39,7 +43,7 @@
           br
           a(href="/campaigns/new").btn.btn-lg.btn-primary New Campaign
       h3 Live
-      ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
+      ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{ published_at: '!null' }")
       h3 Saved
-      ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{published_at: 'null'}")
+      ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{ published_at: 'null' }")
 

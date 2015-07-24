@@ -1,20 +1,22 @@
-h1 edit user
-
-form(ng-submit="updateUser()")
-  .form-group
-    label Full Name
-    input.form-control(type='text', ng-model="user.name")
-  .form-group
-    label Location
-    input.form-control(type='text', ng-model="user.location")
-  .form-group
-    label Handle
-    input.form-control(type='text', ng-model="user.handle", placeholder="@")
-  .form-group
-    label Image Url
-    input.form-control(type='text', ng-model="user.img_url")
-  .form-group
-    label About Me
-    textarea.form-control(ng-model="user.bio")
-  .text-right
-    button.btn.btn-primary(type="submit") Save
+.container
+  .row
+    .col-sm-6.col-sm-offset-3
+      legend Account Settings
+      form(ng-submit="updateUser()")
+        .form-group
+          label Full Name
+          input.form-control(type='text', ng-model="user.name")
+        .form-group
+          label Location
+          input.form-control(type='text', ng-model="user.location")
+        .form-group
+          label Handle
+          input.form-control(type='text', ng-model="user.handle", placeholder="@")
+        .form-group
+          label Image Url
+          input.form-control(type='text', ng-model="user.img_url")
+        .form-group
+          label About Me
+          textarea.form-control(ng-model="user.bio")
+        .text-right
+          button.btn.btn-primary(type="submit") Save
