@@ -8,11 +8,12 @@ angular.module('myApp', ['ngResource',
                          'ngRoute',
                          'angular.filter',
                          'satellizer',
+                         'angularMoment',
                          'myApp.services',
                          'myApp.controllers'])
 
-  .constant('HOST', 'http://localhost:1337/api') //DEV
-  // .constant('HOST', 'http://harold-server.herokuapp.com/api') //PRODUCTION
+  // .constant('HOST', 'http://localhost:1337/api') //DEV
+  .constant('HOST', 'http://harold-server.herokuapp.com/api') //PRODUCTION
   
   .config(['$routeProvider', '$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
     $routeProvider
@@ -43,6 +44,10 @@ angular.module('myApp', ['ngResource',
         templateUrl: 'templates/campaigns-show'
       , controller: 'CampaignShowCtrl'
       })
+      .when('/campaigns/edit/:campaignId', {
+        templateUrl: 'templates/campaigns-edit'
+      , controller: 'CampaignEditCtrl'
+      })
 
       // BROWSE
       .when('/search', {
@@ -54,7 +59,7 @@ angular.module('myApp', ['ngResource',
       })
 
       //USERS
-      .when('/dashboard', {
+      .when('/me', {
         templateUrl: 'templates/user-dashboard'
       , controller: 'DashboardCtrl'
       })
@@ -69,7 +74,7 @@ angular.module('myApp', ['ngResource',
       , controller: 'UserEditCtrl'
       })
 
-      .when('/:handle', {
+      .when('/@:handle', {
         templateUrl: 'templates/user-show'
       , controller: 'UserShowCtrl'
       })

@@ -9,7 +9,9 @@ angular.module('myApp.services', [])
     return $resource(HOST + '/articles/:id', { id: '@id' })
   })
   .factory('Campaign', function ($resource, HOST) {
-    return $resource(HOST + '/campaigns/:id', { id: '@id' })
+    return $resource(HOST + '/campaigns/:id', { id: '@id' }, {
+      update: { method: 'PUT' }
+    })
   })
   .factory('User', function ($resource, HOST) {
     return $resource(HOST + '/users/:id', { id: '@id' })

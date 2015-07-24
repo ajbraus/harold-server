@@ -35,10 +35,14 @@ block body
                   li
                     a#new-campaign(href="/campaigns/new") New Campaign
                   li
-                    a#dashboard(href="/dashboard") Dashboard            
+                    a#dashboard(href="/me") My Dashboard            
                   li
-                    a#edit-profile(href="/profile/edit") Edit Profile            
-                  li.divider(role='separator')             
+                    a#public-profile(href="/@{{user.handle}}") /@{{user.handle}}
+                  li.divider(role='separator')  
+                  li
+                    a#edit-profile(href="/profile/edit") Edit Profile   
+                  li
+                    a#edit-profile(href="/profile/edit") Account Settings            
                   li
                     a#logout-link(href='#' ng-click="logout()") Logout
 

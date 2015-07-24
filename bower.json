@@ -10,6 +10,7 @@
     "angular-sanitize": "latest",
     "angular-touch": "latest",
     "underscore": "latest",
-    "angular-socket-io": "~0.7.0"
+    "angular-socket-io": "~0.7.0",
+    "angular-moment": "~0.10.1"
   }
 }

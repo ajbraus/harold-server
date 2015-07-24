@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('myApp.controllers', [])
-  .controller('MainCtrl', function ($scope, $auth, $http, HOST, Alert) {
+  .controller('MainCtrl', function ($scope, $auth, $http, HOST, AuthService, Alert) {
     $scope.search = {}
     $scope.newSearch = function() {
       console.log($scope.search)
@@ -18,7 +18,12 @@ angular.module('myApp.controllers', [])
         })
     }
 
+    AuthService.CurrentUser().then(function(response) {
+      $scope.user = response.data
+    })
+
     $scope.isAuthenticated = function() {
+      // return $auth.isAuthenticated();
       return $auth.isAuthenticated();
     };
 
@@ -100,6 +105,21 @@ angular.module('myApp.controllers', [])
 
     $scope.createCampaign = function() {
       Campaign.save($scope.campaign, 
+        function(data) {
+          console.log(data)
+          $location.path('/campaigns/' + data._id);
+        },
+        function(data) {
+
+        });
+    }
+  })
+
+  .controller('CampaignEditCtrl', function ($scope, $location, $routeParams, Campaign) {
+    $scope.campaign = Campaign.get({ id: $routeParams.campaignId })
+    console.log($scope.campaign)
+    $scope.createCampaign = function() {
+      Campaign.update({ id: $routeParams.campaignId }, $scope.campaign, 
         function(data) {
           console.log(data)
           $location.path('/campaigns/' + data._id);

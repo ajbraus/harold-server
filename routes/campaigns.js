@@ -46,6 +46,12 @@ module.exports = function(app) {
     });
   });
 
+  app.put('/api/campaigns/:id', authHelpers.ensureAuthenticated, function (req, res) { 
+    Campaign.findOneAndUpdate({ _id: req.params.id }, req.body, function(err, campaign) {
+      res.status(200).json(campaign);
+    })
+  })
+
   // DELETE
   // UPDATE
 

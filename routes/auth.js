@@ -3,6 +3,7 @@
  */
 
 var User = require('../models/user')
+var Campaign = require('../models/campaign')
 var authHelpers = require('./auth-helpers')
 
 module.exports = function(app) {
@@ -216,7 +217,10 @@ module.exports = function(app) {
    */
   app.get('/api/me', authHelpers.ensureAuthenticated, function(req, res) {
     User.findById(req.user).populate('campaigns').exec(function(err, user) {
-      res.json(user);
+      Campaign.populate(user, {path:'campaigns.articles', model:'Article' }, function(err, data) {
+        if (err) { return res.status(404).send(err) };
+        res.status(200).json(user); 
+      });
     });
   });
 
