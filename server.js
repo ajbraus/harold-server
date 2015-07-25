@@ -20,7 +20,7 @@ if (process.env.PORT) {
   var config = require('./config');
 };
 
-mongoose.connect(config.MONGO_URI);
+mongoose.connect(config.MONGOLABS_URI);
 require('./models/article');
 require('./models/campaign');
 require('./models/user');

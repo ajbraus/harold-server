@@ -6,8 +6,10 @@ BASIC GOALS
 Articles#edit
 medium editor
   DONE silent save giving UI feedback
-  see campaign title and details
+  DONE see campaign title and details
+  remove medium editor from title, location, urls
   publish
+  only silent save every 3 seconds
 Articles#new
 Article.pre('save') count words and save
 display articles by published_at date or updated_at date

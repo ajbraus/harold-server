@@ -1,6 +1,6 @@
 module.exports = {
   PORT: '1337',
-  MONGO_URI: 'mongodb://localhost/harold',
+  MONGOLABS_URI: 'mongodb://localhost/harold',
   TOKEN_SECRET: 'hominahominahomina',
   SESSION_SECRET: 'OurSuperSecretCookieSecret',
 
