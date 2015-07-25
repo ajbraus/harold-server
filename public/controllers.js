@@ -100,38 +100,10 @@ angular.module('myApp.controllers', [])
   })
 
   .controller('ArticleEditCtrl', function ($scope, $location, $routeParams, $timeout, $rootScope, Article) {
-    $scope.options = { "title": {
-                          "placeholder": "Title", 
-                          "disableToolbar": true, 
-                          "forcePlainText": true, 
-                          "spellcheck": true,
-                          "disableReturn": true 
-                       },
-                       "body": {
-                          "spellcheck": true,
-                          "placeholder": "Body",
-                          "targetBlank": true,
-                          "disableDoubleReturn": true
-                       },
-                       "location": {
-                          "placeholder": "Location", 
-                          "disableToolbar": true, 
-                          "forcePlainText": true, 
-                          "disableReturn": true 
-                       },
-                       "img_url": {
-                          "placeholder": "Image Url", 
-                          "disableToolbar": true, 
-                          "forcePlainText": true, 
-                          "disableReturn": true 
-                       },
-                       "video_url": {
-                          "placeholder": "Youtube Url", 
-                          "disableToolbar": true, 
-                          "forcePlainText": true, 
-                          "disableReturn": true 
-                       }
-                     }
+    $scope.mediumOptions = { "placeholder": "Body",
+                             "spellcheck": true,
+                             "targetBlank": true,
+                             "disableDoubleReturn": true }
 
     $scope.silentSave = function() {
       console.log('saving')

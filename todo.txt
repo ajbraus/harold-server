@@ -1,16 +1,12 @@
 BASIC GOALS
   Avid readers/backers
     - subscriber emails (popup after 4 seconds)
-  Well Paid and Subscribed Campaigns
+  Well paid and well subscribed campaigns
 
-Articles#edit
-medium editor
-  DONE silent save giving UI feedback
-  DONE see campaign title and details
-  remove medium editor from title, location, urls
-  publish
-  only silent save every 3 seconds
-Articles#new
+Articles#new & edit
+  medium editor
+publish
+
 Article.pre('save') count words and save
 display articles by published_at date or updated_at date
 
@@ -18,6 +14,12 @@ display articles by published_at date or updated_at date
 
 unpublish articles
 unpublish campaigns
+
+Articles can be without a campaign and then be added to one later. Until published.
+
+0/12 articles
+Planned titles/topics of articles
+"New Article" Title edit in place, then Edit
 
 dashboard
   add ui-router
@@ -190,3 +192,10 @@ Sort out public profile and dashboard
     DONE dashboard = '/me' 
     DONE public profile = '/@ajbraus'
     DONE "Last edited 2 months ago" (234 words) so far
+
+DONE Articles#edit
+
+medium editor
+  DONE silent save giving UI feedback
+  DONE see campaign title and details
+  DONE remove medium editor from title, location, urls
