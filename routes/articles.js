@@ -38,10 +38,18 @@ module.exports = function(app) {
     });
   });
 
+  app.put('/api/articles', authHelpers.ensureAuthenticated, function (req, res) {
+    console.log(req.body)
+    console.log(req.user)
+    
+    Article.findByIdAndUpdate(req.body._id, req.body, function (err, article) {
+      res.status(200).json({ "message": "Article Saved Successfully" })
+    });
+  });
+
   // SHOW
   app.get('/api/articles/:id', function (req, res) {
-    Article.findById(req.params.id, function(err, article) {
-      console.log('blah')
+    Article.findById(req.params.id).populate('campaign').exec(function(err, article) {
       if (err) { return res.status(404).send(err) };
       res.status(200).json(article); 
     });

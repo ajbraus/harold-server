@@ -1,12 +1,28 @@
-Articles#create
+BASIC GOALS
+  Avid readers/backers
+    - subscriber emails (popup after 4 seconds)
+  Well Paid and Subscribed Campaigns
+
+Articles#edit
 medium editor
+  DONE silent save giving UI feedback
+  see campaign title and details
+  publish
+Articles#new
 Article.pre('save') count words and save
 display articles by published_at date or updated_at date
 
+"Drafts", "Public", "Unlisted"
+
+unpublish articles
+unpublish campaigns
+
 dashboard
+  add ui-router
+  http://stackoverflow.com/questions/19569581/parts-of-page-as-subviews-in-angular
   stricter divide UX of backed, commented, starred, followed vs. draft & created
     Personalized Front Page
-    Campaigns Dashboard
+    Activity/Inbox/Campaigns Dashboard
 
 Tests 
   signup
@@ -16,36 +32,42 @@ Tests
   campaign#index
   campaign#create
 
+BIG FAT FOOTER
+
 send emails - emailjs or express-mailer. . .
+send news alert texts
 
-homepage 
-  show date and time and topics bar
+NAVBAR
+  show date and time
 
-category#show
+DISCOVERABILITY
+  categories
+    toolbar
+    category#show
+  Search 
+    DONE articles
+    campaigns
+    authors
 
-Sort out public profile and dashboard
-  follow Medium:
-    DONE dashboard = '/me' 
-    DONE public profile = '/@ajbraus'
-    "Drafts", "Public", "Unlisted"
-    If you back you get access to unlisted articles
-    "Last edited 2 months ago" (234 words) so far
+BACKING
+~# of articles in campaign
+  subscribe
+  one time back
+  share backers
+
+  backers get 
+    - bonus materials
+    - project updates
+    - thank you from writer
 
   campaigns, live, not live, current funding, graph of funding, paid to date, shares, reach, followers, backers, sharebackers
   articles, drafts, published
 
-
-seed db with rss feed . . . 
-  http://news.google.com/?output=rss
-    - top news
-    - tech news
-    - satirical news
-
 campaigns video embed
 
-bugs
-error handling
-full_name pattern not working
+BUGS
+  error handling
+  full_name pattern not working
 
 
 New Campaign - kickstarter wizard
@@ -67,16 +89,14 @@ Add Passport Email, Twitter, FB
     - add email & password
 
 Style GlobalAlerts
-New Article - medium editor
-New Backer - Michael
 
-add tags ('topics')
 
-subscribe
-one time back
-share backers
+seed db with rss feed . . . 
+  http://news.google.com/?output=rss
+    - top news
+    - tech news
+    - satirical news
 
-like rewards
 
 invite only
 onboard like twitter & tumblr
@@ -100,12 +120,8 @@ user publishes articles (user.published_articles = [id, id])
 When to use sockets - POST comments, POST backing, POST articles
 
 WEBSITE
-header date
-create account
 mobile app plug
-topics
-Subscribe
-"Suggested for You"
+"Suggested Articles/Campaigns" - could leverage search . . .
 Click hole share buttons
 See campaigns
   DONE Nested routes /campaign/:id/article/:id
@@ -165,3 +181,10 @@ DONE show user
 DONE new article
 DONE campaign populate articles
 DONE article populate campaign
+
+
+Sort out public profile and dashboard
+  follow Medium:
+    DONE dashboard = '/me' 
+    DONE public profile = '/@ajbraus'
+    DONE "Last edited 2 months ago" (234 words) so far

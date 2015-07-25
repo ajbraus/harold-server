@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('myApp.controllers', [])
-  .controller('MainCtrl', function ($scope, $auth, $http, HOST, AuthService, Alert) {
+  .controller('MainCtrl', function ($scope, $auth, $http, $rootScope, HOST, AuthService, Alert) {
     $scope.search = {}
     $scope.newSearch = function() {
       console.log($scope.search)
@@ -77,10 +77,84 @@ angular.module('myApp.controllers', [])
 
   .controller('NewArticleCtrl', function ($scope, $location, $routeParams, Article, Campaign) {
     $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
+    $scope.titleOptions = { "placeholder": "Enter a title", 
+                            "disableToolbar": true, 
+                            "forcePlainText": true, 
+                            "disableReturn": true }
+    $scope.bodyOptions = {};
 
     $scope.article = {
       campaign: $routeParams.campaignId
     };
+
+    $scope.createArticle = function() {
+      Article.save($scope.article, 
+        function(data) {
+          console.log(data)
+          $location.path('/campaigns/' + data.campaign + '/articles/' + data._id);
+        },
+        function(data) {
+
+        });
+    }
+  })
+
+  .controller('ArticleEditCtrl', function ($scope, $location, $routeParams, $timeout, $rootScope, Article) {
+    $scope.options = { "title": {
+                          "placeholder": "Title", 
+                          "disableToolbar": true, 
+                          "forcePlainText": true, 
+                          "spellcheck": true,
+                          "disableReturn": true 
+                       },
+                       "body": {
+                          "spellcheck": true,
+                          "placeholder": "Body",
+                          "targetBlank": true,
+                          "disableDoubleReturn": true
+                       },
+                       "location": {
+                          "placeholder": "Location", 
+                          "disableToolbar": true, 
+                          "forcePlainText": true, 
+                          "disableReturn": true 
+                       },
+                       "img_url": {
+                          "placeholder": "Image Url", 
+                          "disableToolbar": true, 
+                          "forcePlainText": true, 
+                          "disableReturn": true 
+                       },
+                       "video_url": {
+                          "placeholder": "Youtube Url", 
+                          "disableToolbar": true, 
+                          "forcePlainText": true, 
+                          "disableReturn": true 
+                       }
+                     }
+
+    $scope.silentSave = function() {
+      console.log('saving')
+      $scope.saving = true;
+
+      Article.update($scope.article, 
+        function(data) {
+          console.log("saved")
+          $timeout(function() {
+            $scope.saving = false;
+            console.log('hide saving')
+          }, 400);
+        },
+        function(data) {
+          console.log("error")
+          $timeout(function() {
+            $scope.saving = false;
+            console.log('hide saving')
+          }, 400);
+        });
+    }
+
+    $scope.article = Article.get({ id: $routeParams.articleId })
 
     $scope.createArticle = function() {
       Article.save($scope.article, 

@@ -9,7 +9,6 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     created_at    : { type: Date }
   , updated_at    : { type: Date }
-  , published_at  : { type: Date }
   , handle        : { type: String }
   , email         : { type: String, unique: true, select: false, lowercase: true, required: true } // match: /\S+@\S+\.\S+/
   , confirmed     : { type: Boolean, default: false }

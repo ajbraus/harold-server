@@ -7,10 +7,11 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "~1.4.2",
-    "angular-sanitize": "latest",
-    "angular-touch": "latest",
+    "angular-sanitize": "~1.4.3",
+    "angular-touch": "~1.4.3",
     "underscore": "latest",
     "angular-socket-io": "~0.7.0",
-    "angular-moment": "~0.10.1"
+    "angular-moment": "~0.10.1",
+    "angular-medium-editor": "~0.1.0"
   }
 }

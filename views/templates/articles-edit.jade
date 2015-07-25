@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-xs-12.text-right.text-muted
+      i.icon.ion-checkmark-circled(ng-hide="saving")
+      i.icon.ion-load-d(ng-show="saving")
+      span(ng-show="saving")  saving
+      span(ng-hide="saving")  saved
+    .text-center
+      h3 {{article.campaign.title}}
+      p.text-muted 3 Articles | $110 per Article
+    .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
+      h1(ng-model="article.title" medium-editor options='{{options.title}}' ng-change="silentSave()")
+      p(ng-model="article.location" medium-editor options='{{options.location}}' ng-change="silentSave()")
+      p(ng-model="article.img_url" medium-editor options='{{options.img_url}}' ng-change="silentSave()")
+      p(ng-model="article.video_url" medium-editor options='{{options.video_url}}' ng-change="silentSave()")
+      p.article-body(ng-model="article.body" medium-editor options='{{options.body}}' ng-change="silentSave()")

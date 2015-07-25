@@ -166,3 +166,14 @@ ul {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+p:focus, h1:focus {
+   outline: 0px !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none; 
+}
+
+.article-body {
+  min-height: 300px;
+}

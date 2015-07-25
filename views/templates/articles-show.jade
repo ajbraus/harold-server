@@ -15,5 +15,5 @@
     .text-right
       a(href='#').btn Share on Twitter
       a(href='#').btn Share on Facebook
-    h3 {{article.title}}
-    p {{article.body}}
+    h3(ng-bind-html="article.title")
+    p(ng-bind-html="article.body")

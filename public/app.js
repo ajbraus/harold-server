@@ -6,9 +6,12 @@
 
 angular.module('myApp', ['ngResource',
                          'ngRoute',
+                         'ngSanitize',
+                         'ngTouch',
                          'angular.filter',
                          'satellizer',
                          'angularMoment',
+                         'angular-medium-editor',
                          'myApp.services',
                          'myApp.controllers'])
 
@@ -29,6 +32,10 @@ angular.module('myApp', ['ngResource',
       .when('/campaigns/:campaignId/articles/:articleId', {
         templateUrl: 'templates/articles-show'
       , controller: 'ArticleShowCtrl'
+      })
+      .when('/campaigns/:campaignId/articles/edit/:articleId', {
+        templateUrl: 'templates/articles-edit'
+      , controller: 'ArticleEditCtrl'
       })
 
       //CAMPAIGNS

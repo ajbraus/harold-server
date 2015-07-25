@@ -13,12 +13,13 @@ ul.list-group
           a.btn.btn-primary(href="/campaigns/{{campaign._id}}/articles/new") New Article
   li.list-group-item.active Published
   li.list-group-item.clearfix(ng-repeat="article in campaign.articles | filter:{published_at: '!null'}")
-    a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
-      .col-xs-10
+    .col-xs-10
+      a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
         h4 {{article.title}}
-        .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
-      .col-xs-2
-        img.img-responsive(ng-src="{{article.img_url}}")
+      .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
+      a.btn.btn-default(href="/campaigns/{{campaign._id}}/articles/edit/{{article._id}}") Edit
+    .col-xs-2
+      img.img-responsive(ng-src="{{article.img_url}}")
   li.list-group-item.active Drafts
   li.list-group-item.clearfix(ng-repeat="article in campaign.articles | filter:{published_at: 'null'}")
     a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 

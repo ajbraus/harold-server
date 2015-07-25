@@ -6,7 +6,9 @@
 
 angular.module('myApp.services', [])
   .factory('Article', function ($resource, HOST) {
-    return $resource(HOST + '/articles/:id', { id: '@id' })
+    return $resource(HOST + '/articles/:id', { id: '@id' }, {
+      update: { method: 'PUT' }
+    })
   })
   .factory('Campaign', function ($resource, HOST) {
     return $resource(HOST + '/campaigns/:id', { id: '@id' }, {

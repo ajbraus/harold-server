@@ -1,49 +1,34 @@
 .container
   .row
-    .col-sm-4.col-md-3.col-md-offset-1.col-lg-offset-0
-      h2 {{user.name}}
-      nav
-        ul.nav.lead
-          li 
-            h4 Favorites
-          li
-            a(href="/profile/edit")
-              span.badge 6 
-              |  Followed 
-          li
-            a(href="/profile/edit") 
-              span.badge 6
-              |  Backed
-          li 
-            h4 Campaign
-          li
-            a(href="/profile/edit") 
-              span.badge {{(user.campaigns | filter:{ published_at: 'null' }).length}}
-              |  Published
-          li
-            a(href="/profile/edit") 
-              span.badge {{(user.campaigns | filter:{ published_at: '!null' }).length}}
-              |  Draft  
-          li 
-            h4 Activity & Messages
-          li
-            a(href="/profile/edit") Activity
-          li
-            a(href="/profile/edit") Messages
-            h4 Profile
-          li
-            a(href="/@{{user.handle}}") Public Profile
-          li
-            a(href="/profile/edit") Edit Profile
+    .pull-right
+      ul.nav.nav-pills
+        li 
+          a(href="/profile/edit") Activity
+        li
+          a(href="/profile/edit") Inbox
+        li(role='presentation')
+          a(href="/profile/edit")
+            span.badge 6 
+            |  Followed 
+        li(role='presentation')
+          a(href="/profile/edit") 
+            span.badge 6
+            |  Backed
+        li(role='presentation')
+          a(href="/profile/edit") 
+            span.badge {{(user.campaigns | filter:{ published_at: '!null' }).length}}
+            |  Draft 
+        li(role='presentation')
+          a(href="/profile/edit") 
+            span.badge {{(user.campaigns | filter:{ published_at: 'null' }).length}}
+            |  Published
 
-    .col-sm-8
+    .col-sm-8.col-sm-offset-2
       .clearfix
-        h1.pull-left Your Campaigns
+        h1.pull-left Draft Campaigns
         .pull-right
           br
           a(href="/campaigns/new").btn.btn-lg.btn-primary New Campaign
-      h3 Live
       ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{ published_at: '!null' }")
-      h3 Saved
       ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns | filter:{ published_at: 'null' }")
 
