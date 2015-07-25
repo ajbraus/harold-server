@@ -4,15 +4,12 @@
 
 var express = require('express')
   , app = express()
-  // INITIALIZE BASIC EXPRESS MIDDLEWARE
   , path = require('path')
-  , mongoose = require('mongoose')
   , bodyParser = require('body-parser')
-  // , session = require('express-session')
-  // ROUTING
-  , routes = require('./routes')
-  , passport = require('passport')
   , cors = require('cors')
+  , mongoose = require('mongoose')
+  , passport = require('passport')
+  , routes = require('./routes')
 
 if (process.env.PORT) {
   var config = process.env;
