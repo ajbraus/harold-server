@@ -6,10 +6,9 @@ var express = require('express')
   , app = express()
   // INITIALIZE BASIC EXPRESS MIDDLEWARE
   , path = require('path')
+  , mongoose = require('mongoose')
   , bodyParser = require('body-parser')
   // , session = require('express-session')
-  // DB CONFIGURATION
-  , db = require('./db')()
   // ROUTING
   , routes = require('./routes')
   , passport = require('passport')
@@ -20,6 +19,11 @@ if (process.env.PORT) {
 } else {
   var config = require('./config');
 };
+
+mongoose.connect(config.MONGO_URI);
+require('./models/article');
+require('./models/campaign');
+require('./models/user');
 
 app.use(cors())
 
