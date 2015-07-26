@@ -12,6 +12,7 @@
     "underscore": "latest",
     "angular-socket-io": "~0.7.0",
     "angular-moment": "~0.10.1",
-    "angular-medium-editor": "~0.1.0"
+    "angular-medium-editor": "~0.1.0",
+    "angular-ui-router": "~0.2.15"
   }
 }

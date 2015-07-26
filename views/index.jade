@@ -29,7 +29,7 @@ block body
               li(ng-cloak ng-hide="isAuthenticated()")
                 a#login-link(href='#', data-toggle='modal', data-target='#login-modal') Login
               li(ng-cloak ng-show="isAuthenticated()")
-                a#dashboard(href="/me") {{user.name}}
+                a#dashboard(href="/me/activity") {{user.name}}
               li.dropdown#menu-dropdown(ng-cloak ng-show="isAuthenticated()")
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')  
                   span.caret           
@@ -40,9 +40,9 @@ block body
                     a#public-profile(href="/@{{user.handle}}") Your Public Profile
                   li.divider(role='separator')  
                   li
-                    a#edit-profile(href="/profile/edit") Edit Public Profile   
+                    a#edit-profile(href="/me/edit") Edit Public Profile   
                   li
-                    a#edit-profile(href="/profile/edit") Account Settings            
+                    a#edit-profile(href="/me/edit") Account Settings            
                   li
                     a#logout-link(href='#' ng-click="logout()") Logout
 
@@ -73,4 +73,4 @@ block body
                   .login-help
                     a(href='#', data-toggle='modal', data-target='#login-modal') Login
   alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()" ng-cloak) {{alert.msg}}
-  div(ng-view)
+  div(ui-view)

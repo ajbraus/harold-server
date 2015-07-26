@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('myApp', ['ngResource',
-                         'ngRoute',
+                         'ui.router',
                          'ngSanitize',
                          'ngTouch',
                          'angular.filter',
@@ -18,77 +18,104 @@ angular.module('myApp', ['ngResource',
   // .constant('HOST', 'http://localhost:1337/api') //DEV
   .constant('HOST', 'http://inqyer.herokuapp.com/api') //PRODUCTION
   
-  .config(['$routeProvider', '$locationProvider', '$authProvider', function($routeProvider, $locationProvider, $authProvider) {
-    $routeProvider
+  .config(['$stateProvider', '$locationProvider', '$authProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $authProvider, $urlRouterProvider) {
+    
+    $stateProvider
       //ARTICLES
-      .when('/', {
-        templateUrl: 'templates/articles-index'
+      .state('articles', {
+        url: '/'
+      , templateUrl: 'templates/articles-index'
       , controller: 'ArticlesIndexCtrl'
       })
-      .when('/campaigns/:campaignId/articles/new', {
-        templateUrl: 'templates/articles-new'
+      .state('article.new', {
+        url: '/campaigns/:campaignId/articles/new'
+      , templateUrl: 'templates/articles-new'
       , controller: 'NewArticleCtrl'
       })
-      .when('/campaigns/:campaignId/articles/:articleId', {
-        templateUrl: 'templates/articles-show'
+      .state('article', {
+        url: '/campaigns/:campaignId/articles/:articleId'
+      , templateUrl: 'templates/articles-show'
       , controller: 'ArticleShowCtrl'
       })
-      .when('/campaigns/:campaignId/articles/edit/:articleId', {
-        templateUrl: 'templates/articles-edit'
+      .state('article.edit', {
+        url: '/campaigns/:campaignId/articles/edit/:articleId'
+      , templateUrl: 'templates/articles-edit'
       , controller: 'ArticleEditCtrl'
       })
 
       //CAMPAIGNS
-      .when('/campaigns', {
-        templateUrl: 'templates/campaigns-index'
+      .state('campaigns', {
+        url: '/campaigns'
+      , templateUrl: 'templates/campaigns-index'
       , controller: 'CampaignsIndexCtrl'
       })
-      .when('/campaigns/new', {
-        templateUrl: 'templates/campaigns-new'
+      .state('campaign.new', {
+        url: '/campaigns/new'
+      , templateUrl: 'templates/campaigns-new'
       , controller: 'NewCampaignCtrl'
       })
-      .when('/campaigns/:campaignId', {
-        templateUrl: 'templates/campaigns-show'
+      .state('campaign', {
+        url: '/campaigns/:campaignId'
+      , templateUrl: 'templates/campaigns-show'
       , controller: 'CampaignShowCtrl'
       })
-      .when('/campaigns/edit/:campaignId', {
-        templateUrl: 'templates/campaigns-edit'
+      .state('campaign.edit', {
+        url: '/campaigns/edit/:campaignId'
+      , templateUrl: 'templates/campaigns-edit'
       , controller: 'CampaignEditCtrl'
       })
 
       // BROWSE
-      .when('/search', {
-        templateUrl: 'templates/search-index'
+      .state('search', {
+        url: '/search'
+      , templateUrl: 'templates/search-index'
       , controller: 'SearchCtrl'
-
-      // query with param
-      // see articles and campaigns that match that query
       })
 
-      //USERS
-      .when('/me', {
-        templateUrl: 'templates/user-dashboard'
+      //DASHBOARD
+      .state('me', {
+        abstract: true
+      , url: '/me'
+      , templateUrl: 'templates/dashboard'
       , controller: 'DashboardCtrl'
       })
+        .state('me.activity', {
+          url: '/activity'
+        , templateUrl: 'templates/dashboard-activity'
+        })
+        .state('me.inbox', {
+          url: '/inbox'
+        , templateUrl: 'templates/dashboard-inbox'
+        })
+        .state('me.drafts', {
+          url: '/drafts'
+        , templateUrl: 'templates/dashboard-drafts'
+        })
+        .state('me.campaigns', {
+          url: '/campaigns'
+        , templateUrl: 'templates/dashboard-campaigns'
+        })
 
-      .when('/profile/edit', {
-        templateUrl: 'templates/user-edit'
+      //PROFILE
+      .state('me.edit', {
+        url: '/edit'
+      , templateUrl: 'templates/user-edit'
       , controller: 'UserEditCtrl'
       })
 
-      .when('/settings', {
-        templateUrl: 'templates/user-settings'
+      .state('settings', {
+        url: '/settings'
+      , templateUrl: 'templates/user-settings'
       , controller: 'UserEditCtrl'
       })
 
-      .when('/@:handle', {
-        templateUrl: 'templates/user-show'
+      .state('show', {
+        url: '/@:handle'
+      , templateUrl: 'templates/user-show'
       , controller: 'UserShowCtrl'
-      })
-
-      .otherwise({
-        redirectTo: '/'
       });
+
+    $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode({
         enabled: true,

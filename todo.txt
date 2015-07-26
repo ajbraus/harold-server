@@ -22,8 +22,7 @@ Planned titles/topics of articles
 "New Article" Title edit in place, then Edit
 
 dashboard
-  add ui-router
-  http://stackoverflow.com/questions/19569581/parts-of-page-as-subviews-in-angular
+  DONE add ui-router
   stricter divide UX of backed, commented, starred, followed vs. draft & created
     Personalized Front Page
     Activity/Inbox/Campaigns Dashboard
@@ -52,6 +51,10 @@ DISCOVERABILITY
     DONE articles
     campaigns
     authors
+  SEO
+
+style blockquotes
+use first blockquote as description for SEO
 
 BACKING
 ~# of articles in campaign

@@ -1,0 +1,8 @@
+.col-sm-8.col-sm-offset-2
+  .clearfix
+    h1.pull-left Campaigns
+    .pull-right
+      br
+      a(href="/campaigns/new").btn.btn-primary New Campaign
+  ng-include(src="'templates/_dashboard-campaign.jade'" ng-repeat="campaign in user.campaigns")
+  

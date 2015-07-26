@@ -70,13 +70,13 @@ angular.module('myApp.controllers', [])
     $scope.articles = Article.query();
   })
 
-  .controller('ArticleShowCtrl', function ($scope, $routeParams, Article, Campaign) {
-    $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
-    $scope.article = Article.get({ id: $routeParams.articleId });
+  .controller('ArticleShowCtrl', function ($scope, $stateParams, Article, Campaign) {
+    $scope.campaign = Campaign.get({ id: $stateParams.campaignId });
+    $scope.article = Article.get({ id: $stateParams.articleId });
   })
 
-  .controller('NewArticleCtrl', function ($scope, $location, $routeParams, Article, Campaign) {
-    $scope.campaign = Campaign.get({ id: $routeParams.campaignId });
+  .controller('NewArticleCtrl', function ($scope, $location, $stateParams, Article, Campaign) {
+    $scope.campaign = Campaign.get({ id: $stateParams.campaignId });
     $scope.titleOptions = { "placeholder": "Enter a title", 
                             "disableToolbar": true, 
                             "forcePlainText": true, 
@@ -84,7 +84,7 @@ angular.module('myApp.controllers', [])
     $scope.bodyOptions = {};
 
     $scope.article = {
-      campaign: $routeParams.campaignId
+      campaign: $stateParams.campaignId
     };
 
     $scope.createArticle = function() {
@@ -99,7 +99,7 @@ angular.module('myApp.controllers', [])
     }
   })
 
-  .controller('ArticleEditCtrl', function ($scope, $location, $routeParams, $timeout, $rootScope, Article) {
+  .controller('ArticleEditCtrl', function ($scope, $location, $stateParams, $timeout, $rootScope, Article) {
     $scope.mediumOptions = { "placeholder": "Body",
                              "spellcheck": true,
                              "targetBlank": true,
@@ -126,7 +126,7 @@ angular.module('myApp.controllers', [])
         });
     }
 
-    $scope.article = Article.get({ id: $routeParams.articleId })
+    $scope.article = Article.get({ id: $stateParams.articleId })
 
     $scope.createArticle = function() {
       Article.save($scope.article, 
@@ -161,11 +161,11 @@ angular.module('myApp.controllers', [])
     }
   })
 
-  .controller('CampaignEditCtrl', function ($scope, $location, $routeParams, Campaign) {
-    $scope.campaign = Campaign.get({ id: $routeParams.campaignId })
+  .controller('CampaignEditCtrl', function ($scope, $location, $stateParams, Campaign) {
+    $scope.campaign = Campaign.get({ id: $stateParams.campaignId })
     console.log($scope.campaign)
     $scope.createCampaign = function() {
-      Campaign.update({ id: $routeParams.campaignId }, $scope.campaign, 
+      Campaign.update({ id: $stateParams.campaignId }, $scope.campaign, 
         function(data) {
           console.log(data)
           $location.path('/campaigns/' + data._id);
@@ -176,9 +176,9 @@ angular.module('myApp.controllers', [])
     }
   })
 
-  .controller('CampaignShowCtrl', function ($scope, $location, $routeParams, Campaign) {
+  .controller('CampaignShowCtrl', function ($scope, $location, $stateParams, Campaign) {
     console.log('service fetching campaign')
-    $scope.campaign = Campaign.get({ id: $routeParams.campaignId })
+    $scope.campaign = Campaign.get({ id: $stateParams.campaignId })
   })
 
 
@@ -187,13 +187,10 @@ angular.module('myApp.controllers', [])
     AuthService.CurrentUser().then(function(response) {
       $scope.user = response.data
     })
-    $scope.go = function(path) {
-      $location.path(path);
-    }
   })
 
-  .controller('UserShowCtrl', function ($scope, $routeParams, AuthService, User) {
-    $scope.user = User.get({ id: $routeParams.handle });
+  .controller('UserShowCtrl', function ($scope, $stateParams, AuthService, User) {
+    $scope.user = User.get({ id: $stateParams.handle });
   })
 
   .controller('UserEditCtrl', function ($scope, $location, AuthService) {

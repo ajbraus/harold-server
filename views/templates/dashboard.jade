@@ -1,0 +1,25 @@
+.container
+  .row
+    .pull-right
+      ul.nav.nav-pills
+        li 
+          a(ui-sref="me.activity") Activity
+        li
+          a(ui-sref="me.inbox") Inbox
+        //- li(role='presentation')
+        //-   a(ui-sref="me.followed")
+        //-     span.badge 6 
+        //-     |  Following
+        //- li(role='presentation')
+        //-   a(href="/me/backed") 
+        //-     span.badge 6
+        //-     |  Backed
+        li(role='presentation')
+          a(ui-sref="me.drafts") 
+            span.badge {{(user.campaigns | filter:{ published_at: '!null' }).length}}
+            |  Drafts
+        li(role='presentation')
+          a(ui-sref="me.campaigns") 
+            span.badge {{(user.campaigns | filter:{ published_at: 'null' }).length}}
+            |  Campaigns
+  div(ui-view="")
