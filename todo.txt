@@ -5,6 +5,7 @@ BASIC GOALS
 
 Articles#new & edit
   medium editor
+  text-wrap title
   publish public/backers
 
 Article.pre('save') count words and save

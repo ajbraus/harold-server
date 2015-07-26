@@ -10,7 +10,7 @@
       p.text-muted 3 Articles | $110 per Article
     .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
       p
-        input.title-input.clear-input(type='text' ng-model="article.title" placeholder="Title" ng-change="silentSave()")
+        textarea.title-input.clear-input(type='text' ng-model="article.title" placeholder="Title" ng-change="silentSave()")
       p
         input.clear-input(type='text' ng-model="article.location" placeholder="Location" ng-change="silentSave()")
       p
