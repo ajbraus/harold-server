@@ -5,7 +5,7 @@ BASIC GOALS
 
 Articles#new & edit
   medium editor
-publish
+  publish public/backers
 
 Article.pre('save') count words and save
 display articles by published_at date or updated_at date
@@ -21,11 +21,26 @@ Articles can be without a campaign and then be added to one later. Until publish
 Planned titles/topics of articles
 "New Article" Title edit in place, then Edit
 
-dashboard
-  DONE add ui-router
-  stricter divide UX of backed, commented, starred, followed vs. draft & created
-    Personalized Front Page
-    Activity/Inbox/Campaigns Dashboard
+Inbox
+  receive broadcasted messages and updates
+Activity
+  start a draft article
+  start a draft campaign
+  publish a campaign
+  publish an article
+  someday - get paid
+  someday - get a new backer
+  someday - hit your goal
+  someday - follow a campaign
+  someday - campaign got a new follower
+  someday - follow a user
+  someday - get a new follower
+  someday - follow a topic
+  someday - back a campaign
+ -- user: ObjectId
+ -- created_at: Date
+ -- campaign: ObjectId
+ -- article: ObjectId
 
 Tests 
   signup
@@ -96,7 +111,7 @@ Add Passport Email, Twitter, FB
     - add email & password
 
 Style GlobalAlerts
-
+Personalized Front Page
 
 seed db with rss feed . . . 
   http://news.google.com/?output=rss
@@ -202,3 +217,10 @@ medium editor
   DONE silent save giving UI feedback
   DONE see campaign title and details
   DONE remove medium editor from title, location, urls
+
+
+dashboard
+  DONE add ui-router
+  DONE stricter divide UX of backed, commented, starred, followed vs. draft & created
+    
+    DONE Activity/Inbox/Campaigns Dashboard

@@ -29,7 +29,7 @@ block body
               li(ng-cloak ng-hide="isAuthenticated()")
                 a#login-link(href='#', data-toggle='modal', data-target='#login-modal') Login
               li(ng-cloak ng-show="isAuthenticated()")
-                a#dashboard(href="/me/activity") {{user.name}}
+                a#dashboard(href="/me/drafts") {{user.name}}
               li.dropdown#menu-dropdown(ng-cloak ng-show="isAuthenticated()")
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')  
                   span.caret           

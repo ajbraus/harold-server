@@ -27,7 +27,7 @@ angular.module('myApp', ['ngResource',
       , templateUrl: 'templates/articles-index'
       , controller: 'ArticlesIndexCtrl'
       })
-      .state('article.new', {
+      .state('article-new', {
         url: '/campaigns/:campaignId/articles/new'
       , templateUrl: 'templates/articles-new'
       , controller: 'NewArticleCtrl'
@@ -37,7 +37,7 @@ angular.module('myApp', ['ngResource',
       , templateUrl: 'templates/articles-show'
       , controller: 'ArticleShowCtrl'
       })
-      .state('article.edit', {
+      .state('article-edit', {
         url: '/campaigns/:campaignId/articles/edit/:articleId'
       , templateUrl: 'templates/articles-edit'
       , controller: 'ArticleEditCtrl'
@@ -49,7 +49,7 @@ angular.module('myApp', ['ngResource',
       , templateUrl: 'templates/campaigns-index'
       , controller: 'CampaignsIndexCtrl'
       })
-      .state('campaign.new', {
+      .state('campaign-new', {
         url: '/campaigns/new'
       , templateUrl: 'templates/campaigns-new'
       , controller: 'NewCampaignCtrl'
@@ -59,7 +59,7 @@ angular.module('myApp', ['ngResource',
       , templateUrl: 'templates/campaigns-show'
       , controller: 'CampaignShowCtrl'
       })
-      .state('campaign.edit', {
+      .state('campaign-edit', {
         url: '/campaigns/edit/:campaignId'
       , templateUrl: 'templates/campaigns-edit'
       , controller: 'CampaignEditCtrl'
@@ -79,14 +79,6 @@ angular.module('myApp', ['ngResource',
       , templateUrl: 'templates/dashboard'
       , controller: 'DashboardCtrl'
       })
-        .state('me.activity', {
-          url: '/activity'
-        , templateUrl: 'templates/dashboard-activity'
-        })
-        .state('me.inbox', {
-          url: '/inbox'
-        , templateUrl: 'templates/dashboard-inbox'
-        })
         .state('me.drafts', {
           url: '/drafts'
         , templateUrl: 'templates/dashboard-drafts'

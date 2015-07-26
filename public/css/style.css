@@ -4,6 +4,23 @@ body {
   background:white;
 }
 
+h1 {
+  color: #404040;
+}
+
+a {
+  color:#4F4F4F;
+}
+
+a:hover {
+  text-decoration: none;
+  color:#212121;
+}
+
+.navbar {
+  background: white;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
