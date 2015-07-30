@@ -4,19 +4,18 @@ BASIC GOALS
   Well paid and well subscribed campaigns
 
 Articles#new & edit
-  medium editor
-  text-wrap title
-  publish public/backers
+  DONE medium editor
+  DONE no new article, just add title, then edit
+  DONE text-wrap title
+  disable new article button if title is blank
+  set/change campaign
+  if campaign set - publish
+  detect command S to save
+  publications . . . Subscribe to a publication 
+  multiple authors in a publication. . . 
 
 Article.pre('save') count words and save
 display articles by published_at date or updated_at date
-
-"Drafts", "Public", "Unlisted"
-
-unpublish articles
-unpublish campaigns
-
-Articles can be without a campaign and then be added to one later. Until published.
 
 0/12 articles
 Planned titles/topics of articles

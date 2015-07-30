@@ -15,7 +15,7 @@ html(lang="en", ng-app='myApp')
     //- meta(property="og:description" content="")
 
     //- Latest compiled and minified CSS BOOTSTRAP AND IONICONS
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/ionicons/css/ionicons.css')
     link(rel='stylesheet', href='/vendor/medium-editor//dist/css/medium-editor.min.css')
     link(rel="stylesheet" href="/vendor/medium-editor//dist/css/themes/default.css")
@@ -26,17 +26,14 @@ html(lang="en", ng-app='myApp')
   body(ng-controller="MainCtrl")
     block body
 
-  script(src='//code.jquery.com/jquery-1.9.1.js')
-  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
-  script(src='//code.jquery.com/ui/1.10.3/jquery-ui.js')
-
   script(type="text/javascript", src='/vendor/angular/angular.js')
   script(type="text/javascript", src='/vendor/angular-resource/angular-resource.js')
   script(type="text/javascript", src='/vendor/angular-sanitize/angular-sanitize.js')
   script(type="text/javascript", src='/vendor/angular-touch/angular-touch.js')
   script(type="text/javascript", src='/vendor/angular-ui-router/release/angular-ui-router.min.js')
   //- script(type="text/javascript", src='/vendor/angular-socket-io/socket.js')
+  script(type="text/javascript", src='/vendor/jquery/dist/jquery.min.js')
+  script(type="text/javascript", src='/vendor/bootstrap/dist/js/bootstrap.min.js')
   script(type="text/javascript", src='/vendor/underscore/underscore.js')
   script(type="text/javascript", src='/vendor/satellizer/satellizer.min.js')
   script(type="text/javascript", src='/vendor/angular-filter/dist/angular-filter.min.js')
@@ -47,6 +44,7 @@ html(lang="en", ng-app='myApp')
   script(type="text/javascript", src='/app.js')
   script(type="text/javascript", src='/services.js')
   script(type="text/javascript", src='/controllers.js')
+  script(type="text/javascript", src='/directives.js')
 
   //- script(src='/socket.io/socket.io.js')
   //- script.

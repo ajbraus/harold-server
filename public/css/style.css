@@ -19,6 +19,7 @@ a:hover {
 
 .navbar {
   background: white;
+  border:none;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -210,10 +211,22 @@ ul {
 .title-input {
   font-size: 36px;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-family: inherit;
   font-weight: 400;
   line-height: 1.1;
   color: inherit;
-  margin: .67em 0;
+}
+
+
+textarea {
+    resize: none;
+}
+
+h1.dashboard {
+  margin-top:3px;
+}
+
+.article-body p {
+  margin-bottom:20px;
 }

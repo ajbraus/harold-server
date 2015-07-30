@@ -2,75 +2,75 @@ extends layout
 
 block body
   nav.navbar.navbar-default
-      .container
-          // Brand and toggle get grouped for better mobile display
-          .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-              span.sr-only Toggle navigation         
-              span.icon-bar         
-              span.icon-bar         
-              span.icon-bar       
-            a.navbar-brand(href='/') Inqyer
-          // Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              li
-                a(href='/') Front Page
-              li
-                a(href='/campaigns') Discover
-            ul.nav.navbar-nav.navbar-right 
-              form.navbar-form.navbar-left(role='search' ng-submit="newSearch()")
-                .form-group
-                  input.form-control.search-input(type='text' ng-model="search.query" placeholder='Search' required) 
-                button.btn.btn-link(type='submit') 
-                  i.icon.ion-search   
-              li(ng-cloak ng-hide="isAuthenticated()")
-                a#join-link(href='#', data-toggle='modal', data-target='#signup-modal') Join   
-              li(ng-cloak ng-hide="isAuthenticated()")
-                a#login-link(href='#', data-toggle='modal', data-target='#login-modal') Login
-              li(ng-cloak ng-show="isAuthenticated()")
-                a#dashboard(href="/me/drafts") {{user.name}}
-              li.dropdown#menu-dropdown(ng-cloak ng-show="isAuthenticated()")
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')  
-                  span.caret           
-                ul.dropdown-menu
-                  li
-                    a#new-campaign(href="/campaigns/new") New Campaign
-                  li
-                    a#public-profile(href="/@{{user.handle}}") Your Public Profile
-                  li.divider(role='separator')  
-                  li
-                    a#edit-profile(href="/me/edit") Edit Public Profile   
-                  li
-                    a#edit-profile(href="/me/edit") Account Settings            
-                  li
-                    a#logout-link(href='#' ng-click="logout()") Logout
+    // Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+        span.sr-only Toggle navigation         
+        span.icon-bar         
+        span.icon-bar         
+        span.icon-bar       
+      a.navbar-brand(href='/') Inqyer
+    // Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a(href='/') Front Page
+        li
+          a(href='/campaigns') Discover
+      ul.nav.navbar-nav.navbar-right 
+        form.navbar-form.navbar-left(role='search' ng-submit="newSearch()")
+          .form-group
+            input.form-control.search-input(type='text' ng-model="search.query" placeholder='Search' required) 
+          button.btn.btn-link(type='submit') 
+            i.icon.ion-search   
+        li(ng-cloak ng-hide="isAuthenticated()")
+          a#join-link(href='#', data-toggle='modal', data-target='#signup-modal') Join   
+        li(ng-cloak ng-hide="isAuthenticated()")
+          a#login-link(href='#', data-toggle='modal', data-target='#login-modal') Login
+        li(ng-cloak ng-show="isAuthenticated()")
+          a#dashboard(href="/me/drafts") {{user.name}}
+        li.dropdown#menu-dropdown(ng-cloak ng-show="isAuthenticated()")
+          a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')  
+            span.caret           
+          ul.dropdown-menu
+            li
+              a#new-campaign(href="/campaigns/new") New Campaign
+            li
+              a#public-profile(href="/@{{user.handle}}") Your Public Profile
+            li.divider(role='separator')  
+            li
+              a#edit-profile(href="/me/edit") Edit Public Profile   
+            li
+              a#edit-profile(href="/me/edit") Account Settings            
+            li
+              a#logout-link(href='#' ng-click="logout()") Logout
 
-            #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
-              .modal-dialog
-                .loginmodal-container
-                  h1 Login to Inqyer
-                  .login-help.text-muted.text-center Welcome Back
-                  br
-                  form(ng-submit="login()")
-                    input(type='email', ng-model="login_user.email", name='user', placeholder='Email' required)
-                    input(type='password', ng-model="login_user.password", name='pass', placeholder='Password' required)
-                    input.login.loginmodal-submit(type='submit', name='login', value='Login') 
-                  .login-help
-                    a(href='#', data-toggle='modal', data-target='#signup-modal') Join  - 
-                    a(href='#') Forgot Password
-            #signup-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
-              .modal-dialog
-                .loginmodal-container
-                  h1 Join Inqyer
-                  .login-help.text-muted.text-center Personalized Crowdfunded News
-                  br   
-                  form(ng-submit="signup()")
-                    input(type='email', ng-model="reg_user.email", name='user', placeholder='Email' required)
-                    input(type='password', ng-model="reg_user.password", name='pass', placeholder='Password' required)
-                    input(type='password', ng-model="reg_user.password_confirm", name='pass', placeholder='Confirm Password' required)
-                    input.login.loginmodal-submit(type='submit', name='login', value='Join')
-                  .login-help
-                    a(href='#', data-toggle='modal', data-target='#login-modal') Login
+      #login-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+          .loginmodal-container
+            h1 Login to Inqyer
+            .login-help.text-muted.text-center Welcome Back
+            br
+            form(ng-submit="login()")
+              input(type='email', ng-model="login_user.email", name='user', placeholder='Email' required)
+              input(type='password', ng-model="login_user.password", name='pass', placeholder='Password' required)
+              input.login.loginmodal-submit(type='submit', name='login', value='Login') 
+            .login-help
+              a(href='#', data-toggle='modal', data-target='#signup-modal') Join  - 
+              a(href='#') Forgot Password
+      #signup-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true', style='display: none;')
+        .modal-dialog
+          .loginmodal-container
+            h1 Join Inqyer
+            .login-help.text-muted.text-center Personalized Crowdfunded News
+            br   
+            form(ng-submit="signup()")
+              input(type='text', ng-model="reg_user.handle", name='handle', placeholder='@handle' required)
+              input(type='email', ng-model="reg_user.email", name='email', placeholder='Email' required)
+              input(type='password', ng-model="reg_user.password", name='pass', placeholder='Password' required)
+              input(type='password', ng-model="reg_user.password_confirm", name='pass', placeholder='Confirm Password' required)
+              input.login.loginmodal-submit(type='submit', name='login', value='Join')
+            .login-help
+              a(href='#', data-toggle='modal', data-target='#login-modal') Login
   alert(ng-repeat="alert in globalAlerts" type="{{alert.type}}" close="alert.close()" ng-cloak) {{alert.msg}}
   div(ui-view)

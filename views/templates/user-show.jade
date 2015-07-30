@@ -27,7 +27,7 @@
       small.text-muted Sharers
 .col-sm-8.col-lg-7
   h1 {{user.name}}'s Campaigns
-  div(ng-repeat="campaign in user.campaigns | filter:{published_at: '!null'}")
+  div(ng-repeat="campaign in user.campaigns | filter:{ published_at: 'true' }")
     a(href="/campaigns/{{campaign._id}}")
       h2 {{campaign.title}}
     ng-include(src="'templates/_article.jade'", ng-repeat="article in campaign.articles")

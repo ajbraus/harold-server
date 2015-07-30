@@ -28,7 +28,7 @@ angular.module('myApp', ['ngResource',
       , controller: 'ArticlesIndexCtrl'
       })
       .state('article-new', {
-        url: '/campaigns/:campaignId/articles/new'
+        url: '/articles/new'
       , templateUrl: 'templates/articles-new'
       , controller: 'NewArticleCtrl'
       })
@@ -38,7 +38,7 @@ angular.module('myApp', ['ngResource',
       , controller: 'ArticleShowCtrl'
       })
       .state('article-edit', {
-        url: '/campaigns/:campaignId/articles/edit/:articleId'
+        url: '/articles/edit/:articleId'
       , templateUrl: 'templates/articles-edit'
       , controller: 'ArticleEditCtrl'
       })

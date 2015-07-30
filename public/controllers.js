@@ -70,33 +70,8 @@ angular.module('myApp.controllers', [])
     $scope.articles = Article.query();
   })
 
-  .controller('ArticleShowCtrl', function ($scope, $stateParams, Article, Campaign) {
-    $scope.campaign = Campaign.get({ id: $stateParams.campaignId });
+  .controller('ArticleShowCtrl', function ($scope, $stateParams, Article) {
     $scope.article = Article.get({ id: $stateParams.articleId });
-  })
-
-  .controller('NewArticleCtrl', function ($scope, $location, $stateParams, Article, Campaign) {
-    $scope.campaign = Campaign.get({ id: $stateParams.campaignId });
-    $scope.titleOptions = { "placeholder": "Enter a title", 
-                            "disableToolbar": true, 
-                            "forcePlainText": true, 
-                            "disableReturn": true }
-    $scope.bodyOptions = {};
-
-    $scope.article = {
-      campaign: $stateParams.campaignId
-    };
-
-    $scope.createArticle = function() {
-      Article.save($scope.article, 
-        function(data) {
-          console.log(data)
-          $location.path('/campaigns/' + data.campaign + '/articles/' + data._id);
-        },
-        function(data) {
-
-        });
-    }
   })
 
   .controller('ArticleEditCtrl', function ($scope, $location, $stateParams, $timeout, $rootScope, Article) {
@@ -183,10 +158,31 @@ angular.module('myApp.controllers', [])
 
 
   // USERS
-  .controller('DashboardCtrl', function ($scope, $location, AuthService) {
+  .controller('DashboardCtrl', function ($scope, $state, $location, Article, AuthService) {
+    function setStateName(current_state) {
+      var stateString = current_state.name.split('.')[1]
+      $scope.state = stateString.charAt(0).toUpperCase() + stateString.slice(1); 
+    }
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+      setStateName(toState);
+    })
+
+    $scope.newArticle = {};
+    $scope.createArticle = function() {
+      Article.save($scope.newArticle,
+        function(data) {
+          console.log(data)
+          $location.path('articles/edit/' + data._id)
+        },
+        function(data) {
+          console.log(data)
+        })
+    }
+
     AuthService.CurrentUser().then(function(response) {
       $scope.user = response.data
     })
+
   })
 
   .controller('UserShowCtrl', function ($scope, $stateParams, AuthService, User) {

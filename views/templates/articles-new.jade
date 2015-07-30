@@ -1,22 +1,15 @@
 .container
   .row
-    .text-center
-      h3 {{campaign.title}}
-      p.text-muted 3 Articles | $110 per Article
-    .col-sm-8.col-md-6.col-sm-offset-2.col-md-offset-3
-      form(ng-submit="createArticle()")
-        h1(ng-model="article.title" medium-editor options='{{titleOptions}}')
-        p(ng-model="article.body" medium-editor options='{{bodyOptions}}')
-        .form-group
-          label Location
-          input.form-control(type='text', ng-model="article.location")
-        .form-group
-          label Image Url
-          input.form-control(type='text', ng-model="article.img_url")
-        .form-group
-          label Video Url
-          input.form-control(type='text', ng-model="article.video_url")
-        .text-right
-          .btn-toolbar
-            button.btn.btn-primary(type="submit") Publish
-            button.btn.btn-default(type="submit") Save for Later
+    .col-xs-12.text-right.text-muted
+      i.icon.ion-checkmark-circled(ng-hide="saving")
+      i.icon.ion-load-d(ng-show="saving")
+      span(ng-show="saving")  saving
+      span(ng-hide="saving")  saved
+    .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
+      .text-center(ng-show='article.campaign')
+        h3 {{article.campaign.title}}
+        p.text-muted 3 Articles | $110 per Article
+      .text-center(ng-hide='article.campaign')
+        select.form-control(ng-model="article.campaign" convert-to-number)
+          option(ng-repeat="campaign in user.campaigns" value="campaign") {{campaign.title}}
+      div(ng-include="'templates/_article-form.jade'")

@@ -1,10 +1,12 @@
 .container
   .row
-    .pull-right
-      ul.nav.nav-pills
+    .col-sm-6
+      h1.dashboard {{state}}
+    .col-sm-6
+      ul.nav.nav-pills.navbar-right
         li(role='presentation')
           a(ui-sref="me.drafts") 
-            span.badge {{(user.articles | filter:{ published_at: '!null' }).length}}
+            span.badge {{user.drafts.length}}
             |  Drafts
         li(role='presentation')
           a(ui-sref="me.campaigns") 

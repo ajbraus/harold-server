@@ -27,14 +27,27 @@ module.exports = function(app) {
 
     article.save(function (err, article) {
       console.log('article saved')
-      Campaign.findById(article.campaign, function(err, campaign) {
-        if (err) { return res.send(err) };
-        campaign.articles.unshift(article);
-        campaign.save(function(err) {
-          if (err) { return res.send(err) };
-          res.status(201).json(article)
-        });
-      });
+      if (article) {
+        User.findById(req.user, function(err, user) {
+          user.drafts.push(article);
+          user.save(function() {
+            if (article.campaign) {
+              Campaign.findById(article.campaign, function(err, campaign) {
+                if (err) { return res.send(err) };
+                campaign.articles.unshift(article);
+                campaign.save(function(err) {
+                  if (err) { return res.send(err) };
+                  res.status(201).json(article)
+                });
+              })
+            } else {
+              res.status(201).json(article)
+            }
+          })
+        })
+      } else {
+        res.send(err)
+      }
     });
   });
 

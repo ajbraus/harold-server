@@ -1,7 +1,10 @@
-.col-sm-8.col-sm-offset-2
-  .clearfix
-    h1.pull-left Drafts
-    .pull-right
+.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+  form.row(ng-submit="createArticle()")
+    .col-xs-10
+      textarea.title-input.clear-input(title-case type='text' ng-model="newArticle.title" placeholder="Title" ng-change="silentSave()")
+    .col-xs-2
       br
-      a(href="/articles/new").btn.btn-primary New Article
+      button.btn.btn-primary(type='submit') New Article
+  hr
+  div(ng-repeat="article in user.drafts" ng-include="'templates/_article-draft.jade'")
 

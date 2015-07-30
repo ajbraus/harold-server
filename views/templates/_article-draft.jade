@@ -1,0 +1,10 @@
+.media
+  .media-body
+    a(ng-href="/articles/edit/{{article._id}}") 
+      h4.media-heading {{article.title}}
+      .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
+      h5(ng-bind="article.campaign.title")
+  .media-right
+    a(href="/articles/edit/{{article._id}}") 
+      img.media-object(ng-src="{{article.img_url}}", alt='...', width='90px')  
+hr

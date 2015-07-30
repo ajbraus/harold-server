@@ -9,13 +9,4 @@
       h3 {{article.campaign.title}}
       p.text-muted 3 Articles | $110 per Article
     .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
-      p
-        textarea.title-input.clear-input(type='text' ng-model="article.title" placeholder="Title" ng-change="silentSave()")
-      p
-        input.clear-input(type='text' ng-model="article.location" placeholder="Location" ng-change="silentSave()")
-      p
-        input.clear-input(type='text' ng-model="article.img_url" placeholder="Image URL" ng-change="silentSave()")
-      p
-        input.clear-input(type='text' ng-model="article.video_url" placeholder="Video URL" ng-change="silentSave()")
-      hr
-      p.clear-input(ng-model="article.body" medium-editor options='{{mediumOptions}}' ng-change="silentSave()")
+      div(ng-include="'templates/_article-form.jade'")

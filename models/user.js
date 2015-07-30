@@ -24,7 +24,7 @@ var UserSchema = new Schema({
   , img_url       : { type: String, trim: true }
 
   //REFERENCES
-
+  , drafts        : [{ type: Schema.Types.ObjectId, ref: 'Article' }]
   //user.articles = Article.find({ author: user._id });
   //populate('campaigns')
   , campaigns     : [{ type: Schema.Types.ObjectId, ref: 'Campaign' }]

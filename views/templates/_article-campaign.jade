@@ -1,0 +1,13 @@
+.media
+  .media-body
+    a(ng-href="/campaigns/{{campaign._id}}/articles{{!article.published_at ? '/edit' : ''}}/{{article._id}}") 
+      h4.media-heading {{article.title}}
+      div(ng-hide="article.published_at")
+        .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
+        .text-danger Draft
+      div(ng-show="article.published_at")
+        .text-muted Published #[span(am-time-ago="article.published_at")] on #[span(am-time-ago="article.published_at")]
+  .media-right
+    a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
+      img.media-object(ng-src="{{article.img_url}}", alt='...', width='90px')  
+hr

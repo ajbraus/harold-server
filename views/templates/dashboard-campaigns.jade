@@ -1,9 +1,7 @@
-.col-sm-8.col-sm-offset-2
-  .clearfix
-    h1.pull-left Campaigns
-    .pull-right
-      br
-      a(href="/campaigns/new").btn.btn-primary New Campaign
+.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+  br
+  .text-right
+    a(href="/campaigns/new").btn.btn-primary New Campaign
   hr
   div(ng-repeat="campaign in user.campaigns")
     .row
@@ -19,19 +17,7 @@
           a.btn.btn-sm.btn-default(href="/campaigns/edit/{{campaign._id}}") Edit
           a.btn.btn-sm.btn-primary(href="/campaigns/{{campaign._id}}/articles/new") New Article
     br
-    .media(ng-repeat="article in campaign.articles | orderBy: 'published_at':true")
-      .media-body
-        a(ng-href="/campaigns/{{campaign._id}}/articles{{!article.published_at ? '/edit' : ''}}/{{article._id}}") 
-          h4.media-heading {{article.title}}
-          div(ng-hide="article.published_at")
-            .text-muted Last edited #[span(am-time-ago="article.updated_at")] - 200 words so far
-            .text-danger Draft
-          div(ng-show="article.published_at")
-            .text-muted Published #[span(am-time-ago="article.published_at")] on #[span(am-time-ago="article.published_at")]
-
-      .media-right
-        a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
-          img.media-object(ng-src="{{article.img_url}}", alt='...', width='90px')  
-    hr
+    div(ng-repeat="article in campaign.articles" ng-include="'templates/_article-campaign.jade'")
+    
 
 
