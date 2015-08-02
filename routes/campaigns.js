@@ -22,6 +22,9 @@ module.exports = function(app) {
     console.log('finding campaign')
     Campaign.findById(req.params.id).populate('user').populate('articles').exec(function(err, campaign) {
       if (err) { return res.status(404).send(err) };
+      campaign.impression_count = article.impressions_count++
+      campaign.save();
+
       res.status(200).json(campaign); // return all nerds in JSON format
     });
   });

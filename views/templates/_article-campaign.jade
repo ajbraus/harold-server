@@ -9,5 +9,5 @@
         .text-muted Published #[span(am-time-ago="article.published_at")] on #[span(am-time-ago="article.published_at")]
   .media-right
     a(href="/campaigns/{{campaign._id}}/articles/{{article._id}}") 
-      img.media-object(ng-src="{{article.img_url}}", alt='...', width='90px')  
+      img.media-object(ng-show="{{article.img_url}}" ng-src="{{article.img_url}}", alt='...', width='90px')  
 hr

@@ -10,6 +10,21 @@ angular.module('myApp.services', [])
       update: { method: 'PUT' }
     })
   })
+  .factory('Categories', function() {
+    return [ "Arts & Entertainment"
+    , "Business & Economy"
+    , "Enviroment"
+    , "Health"
+    , "Science"
+    , "Sports"
+    , "Technology"
+    , "United States"
+    , "U.S. Politics"
+    , "World News"
+    , "World Politics"
+    , "Satirical News" ]
+  })
+
   .factory('Campaign', function ($resource, HOST) {
     return $resource(HOST + '/campaigns/:id', { id: '@id' }, {
       update: { method: 'PUT' }

@@ -5,7 +5,9 @@
 'use strict';
 
 angular.module('myApp.controllers', [])
-  .controller('MainCtrl', function ($scope, $auth, $http, $rootScope, HOST, AuthService, Alert) {
+  .controller('MainCtrl', function ($scope, $auth, $http, $rootScope, HOST, AuthService, Alert, Categories) {
+    $scope.categories = Categories;
+
     $scope.search = {}
     $scope.newSearch = function() {
       console.log($scope.search)
@@ -75,12 +77,53 @@ angular.module('myApp.controllers', [])
   })
 
   .controller('ArticleEditCtrl', function ($scope, $location, $stateParams, $timeout, $rootScope, Article) {
+
+    $scope.article = Article.get({ id: $stateParams.articleId })
+
+    $scope.countWords = function() {
+      var s = $scope.article.body
+      s = s.replace(/(^\s*)|(\s*$)/gi,"");
+      s = s.replace(/[ ]{2,}/gi," ");
+      s = s.replace(/\n /,"\n");
+      $scope.article.word_count = s.split(' ').length;
+    }
+
+    $scope.publish = function() {
+      $scope.article.published_at = new Date();
+      Article.update($scope.article, 
+        function(data) {
+          console.log("saved")
+          $location.path('/campaigns/' + $scope.article.campaign._id + '/articles/' + $scope.article._id)
+        },
+        function(data) {
+          console.log("error")
+        });
+    }
+
     $scope.mediumOptions = { "placeholder": "Body",
                              "spellcheck": true,
                              "targetBlank": true,
                              "disableDoubleReturn": true }
 
+    $scope.changedCampaign = function () {
+      // send the ID to the server to be saved
+      $scope.silentSave();
+      // Show the campaign
+      // could either set the full campaign object equal to to article.campaign or
+      // could display the campaign object separately...
+      var newCampaign = _.findWhere($scope.user.campaigns, { _id: $scope.article.campaign })
+      console.log(newCampaign);
+      $scope.article.campaign = newCampaign;
+      console.log($scope.article)
+    }
+
+    $scope.removeCampaign = function() {
+      $scope.article.campaign = null;
+      $scope.silentSave();
+    }
+
     $scope.silentSave = function() {
+      $scope.countWords();
       console.log('saving')
       $scope.saving = true;
 
@@ -100,19 +143,6 @@ angular.module('myApp.controllers', [])
           }, 400);
         });
     }
-
-    $scope.article = Article.get({ id: $stateParams.articleId })
-
-    $scope.createArticle = function() {
-      Article.save($scope.article, 
-        function(data) {
-          console.log(data)
-          $location.path('/campaigns/' + data.campaign + '/articles/' + data._id);
-        },
-        function(data) {
-
-        });
-    }
   })
 
 
@@ -121,8 +151,10 @@ angular.module('myApp.controllers', [])
     $scope.campaigns = Campaign.query()
   })
 
-  .controller('NewCampaignCtrl', function ($scope, $location, Campaign) {
+  .controller('NewCampaignCtrl', function ($scope, $location, Campaign, Categories) {
     $scope.campaign = {}
+
+    $scope.categories = Categories;
 
     $scope.createCampaign = function() {
       Campaign.save($scope.campaign, 
@@ -158,7 +190,7 @@ angular.module('myApp.controllers', [])
 
 
   // USERS
-  .controller('DashboardCtrl', function ($scope, $state, $location, Article, AuthService) {
+  .controller('DashboardCtrl', function ($scope, $state, $location, Article, AuthService, Categories) {
     function setStateName(current_state) {
       var stateString = current_state.name.split('.')[1]
       $scope.state = stateString.charAt(0).toUpperCase() + stateString.slice(1); 
@@ -198,7 +230,7 @@ angular.module('myApp.controllers', [])
       console.log($scope.user)
       AuthService.updateCurrentUser($scope.user).then(function(response) {
         $scope.user = response.data;
-        $location.path('/dashboard');
+        $location.path('/@' + $scope.user.handle);
       })
     }
   })

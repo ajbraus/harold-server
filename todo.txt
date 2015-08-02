@@ -1,25 +1,113 @@
 BASIC GOALS
   Avid readers/backers
-    - subscriber emails (popup after 4 seconds)
+    - subscriber emails (popup after 4 seconds, or scrolling down a bit)
+    - subscribe to this publication
+    - subscribe to inqyer "slim" - get the skinny of crowdsourced news
+    - subscribe to inqyer top stories
   Well paid and well subscribed campaigns
 
-Articles#new & edit
-  DONE medium editor
-  DONE no new article, just add title, then edit
-  DONE text-wrap title
-  disable new article button if title is blank
-  set/change campaign
-  if campaign set - publish
-  detect command S to save
-  publications . . . Subscribe to a publication 
-  multiple authors in a publication. . . 
+Articles      
 
-Article.pre('save') count words and save
-display articles by published_at date or updated_at date
+New Campaign
+  authorization - only logged in can create new campaign
+  save for later vs. publish
+  wizard
+  0/12 articles
+  campaign wizard - medium editor for summary
+  DONE category dropdown select
 
-0/12 articles
-Planned titles/topics of articles
-"New Article" Title edit in place, then Edit
+Onboarding
+  onboard like twitter & tumblr
+    See articles - sign up for invitation - email
+    1. email, pw, pw confirm
+    2. how old are you? 30 years young
+    3. follow topics, follow campaigns
+    4. push mobile
+    5. confirm email -> push mobile
+  full_name pattern not working
+  wizard
+  @handle
+    add input group '@' prefix to signup form and profile edit form
+    add '@' to handle in user-show
+    update user-show to be oriented towards normal users
+      - show campaigns they follow/back
+      - show articles they've read
+      - show recommendations
+
+BIG FAT FOOTER
+
+send emails - emailjs or express-mailer. . .
+send news alert texts
+
+NAVBAR
+  show date and time
+  categories
+    category#show
+
+DISCOVERABILITY
+  Search 
+    DONE articles
+    campaigns
+    authors
+  SEO
+
+style blockquotes
+use first blockquote as description for SEO
+create SEO enhanced slug, title and description for article
+
+INVITE ONLY
+  Invite 10 people to join to publish
+
+BACKING
+~# of articles in campaign
+  subscribe
+  one time back
+  share backers
+
+  backers get 
+    - bonus materials
+    - project updates
+    - thank you from writer
+
+  campaigns, live, not live, current funding, graph of funding, paid to date, shares, reach, followers, backers, sharebackers
+  articles, drafts, published
+
+campaigns video embed
+image upload resize
+
+BUGS
+  error handling
+
+"Suggested Articles/Campaigns" - could leverage search . . .
+Click hole share buttons
+
+Add Passport Email, Twitter, FB
+  onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
+
+  satellizer-local
+    confirm email
+
+  satellizer-facebook
+    - add email & password
+  satellizer-twitter
+    - add email & password
+
+Style GlobalAlerts
+
+seed db with rss feed . . . 
+  http://news.google.com/?output=rss
+    - top news
+    - tech news
+    - satirical news
+
+
+pay for an editor. . .  
+
+publications . . . Subscribe to a publication
+  user.followed_campaigns
+  user.followed_categories
+
+multiple author campaigns
 
 Inbox
   receive broadcasted messages and updates
@@ -50,105 +138,6 @@ Tests
   campaign#index
   campaign#create
 
-BIG FAT FOOTER
-
-send emails - emailjs or express-mailer. . .
-send news alert texts
-
-NAVBAR
-  show date and time
-
-DISCOVERABILITY
-  categories
-    toolbar
-    category#show
-  Search 
-    DONE articles
-    campaigns
-    authors
-  SEO
-
-style blockquotes
-use first blockquote as description for SEO
-
-BACKING
-~# of articles in campaign
-  subscribe
-  one time back
-  share backers
-
-  backers get 
-    - bonus materials
-    - project updates
-    - thank you from writer
-
-  campaigns, live, not live, current funding, graph of funding, paid to date, shares, reach, followers, backers, sharebackers
-  articles, drafts, published
-
-campaigns video embed
-
-BUGS
-  error handling
-  full_name pattern not working
-
-
-New Campaign - kickstarter wizard
-  authorization - only logged in can create new campaign
-  category dropdown select
-  save for later vs. publish
-  wizard
-
-
-Add Passport Email, Twitter, FB
-  onboarding - authentication, confirm, username, email, & set password, pick 5 topics to follow
-
-  satellizer-local
-    confirm email
-
-  satellizer-facebook
-    - add email & password
-  satellizer-twitter
-    - add email & password
-
-Style GlobalAlerts
-Personalized Front Page
-
-seed db with rss feed . . . 
-  http://news.google.com/?output=rss
-    - top news
-    - tech news
-    - satirical news
-
-
-invite only
-onboard like twitter & tumblr
-This is like twitter . . . but backed. Essentially backed to write tweets. . . 
-See articles - sign up for invitation - email
-1. email, pw, pw confirm
-2. how old are you? 30 years young
-3. follow topics, follow campaigns
-4. push mobile
-5. confirm email -> push mobile
-
-campaign.author_id
-user follows campaigns (user.campaigns = [id, id]
-user follows topics (user.topics = ['string', 'string'])
-
-user starts campaigns (user.unpublished_campaigns = [id, id])
-user publishes campaings (user.published_campaigns = [id, id])
-user starts articles (user.unpublished_articles = [id, id])
-user publishes articles (user.published_articles = [id, id])
-
-When to use sockets - POST comments, POST backing, POST articles
-
-WEBSITE
-mobile app plug
-"Suggested Articles/Campaigns" - could leverage search . . .
-Click hole share buttons
-See campaigns
-  DONE Nested routes /campaign/:id/article/:id
-New articles Save and Publish 
-New campaigns Save and Publish
 
 DONE Basic navigation and templating
 DONE See articles
@@ -224,3 +213,23 @@ dashboard
   DONE stricter divide UX of backed, commented, starred, followed vs. draft & created
     
     DONE Activity/Inbox/Campaigns Dashboard
+
+
+  DONE medium editor
+  DONE no new article, just add title, then edit
+  DONE text-wrap title
+
+
+DONE disable new article button if title is blank
+
+DONE set/change campaign
+DONE if campaign set - allow publish
+
+  on publish
+    DONE remove from drafts
+DONE Analytics show article reach/views
+DONE campaign & articles impression count
+
+DONE Article.pre('save') count words and save
+
+DONE display articles by published_at date or updated_at date

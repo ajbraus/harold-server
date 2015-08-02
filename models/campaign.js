@@ -6,16 +6,17 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CampaignSchema = new Schema({
-    created_at    : { type: Date }
-  , updated_at    : { type: Date }
-  , published_at  : { type: Date }
-  , title         : { type: String, required: true, trim: true }
-  , summary       : { type: String, trim: true }
-  , location      : { type: String, trim: true }
-  , category      : { type: String }
-  , goal_in_cents : { type: Number }
-  , img_url       : { type: String, trim: true }
-  , video_url     : { type: String, trim: true }
+    created_at          : { type: Date }
+  , updated_at          : { type: Date }
+  , published_at        : { type: Date }
+  , title               : { type: String, required: true, trim: true }
+  , summary             : { type: String, trim: true }
+  , location            : { type: String, trim: true }
+  , category            : { type: String }
+  , goal_in_cents       : { type: Number }
+  , img_url             : { type: String, trim: true }
+  , video_url           : { type: String, trim: true }
+  , impressions_count   : { type: Number, default: 0 }
   
   // REFERENCES
 

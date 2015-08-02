@@ -1,12 +1,25 @@
 .container
   .row
-    .col-xs-12.text-right.text-muted
-      i.icon.ion-checkmark-circled(ng-hide="saving")
-      i.icon.ion-load-d(ng-show="saving")
-      span(ng-show="saving")  saving
-      span(ng-hide="saving")  saved
-    .text-center
-      h3 {{article.campaign.title}}
-      p.text-muted 3 Articles | $110 per Article
-    .col-sm-8.col-lg-6.col-sm-offset-2.col-lg-offset-3
+    .col-sm-1.col-md-2.col-lg-3.text-muted.pull-right.text-right
+      a.btn.btn-warning(href="#" ng-click="publish()" ng-disabled="!article.campaign || !article.title || !article.body") Publish 
+      &nbsp; &nbsp; &nbsp;
+      span(style="width:140px;")
+        i.icon.ion-checkmark-circled(ng-hide="saving")
+        i.icon.ion-load-d(ng-show="saving")
+        span(ng-show="saving")  saving
+        span(ng-hide="saving")  saved
+    .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+      .text-center
+        div(ng-show="user.campaigns.length == 0")
+          a.btn.btn-default(href="/campaigns/new") Start a Campaign
+        div(ng-show="article.campaign && user.campaigns.length > 0" ng-mouseover="changeCampaign = true")
+          a(href="/campaigns/{{article.campaign._id}}") 
+            h3 {{article.campaign.title}} 
+          .text-muted {{article.campaign.articles.length}} Articles | $ per Article
+          small
+            a.text-center(href="#" ng-click="removeCampaign()") Change Campaign
+        div(ng-show="!article.campaign && user.campaigns.length > 0")
+          select.form-control(ng-model="article.campaign" ng-change="changedCampaign()")
+            option(value="{{campaign._id}}" ng-repeat="campaign in user.campaigns") {{campaign.title}}
+      br
       div(ng-include="'templates/_article-form.jade'")

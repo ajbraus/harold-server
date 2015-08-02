@@ -6,13 +6,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
-    created_at    : { type: Date }
-  , updated_at    : { type: Date }
-  , published_at  : { type: Date }
-  , title         : { type: String, required: true, trim: true }
-  , body          : { type: String, trim: true }
-  , img_url       : { type: String, trim: true }
-
+    created_at          : { type: Date }
+  , updated_at          : { type: Date }
+  , published_at        : { type: Date }
+  , title               : { type: String, required: true, trim: true }
+  , body                : { type: String, trim: true }
+  , img_url             : { type: String, trim: true }
+  , impressions_count   : { type: Number, default: 0 }
+  , word_count          : { type: Number, default: 0 }
+  
   // REFERENCES
 
   //populate('author')

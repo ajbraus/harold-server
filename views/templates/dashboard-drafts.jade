@@ -4,7 +4,7 @@
       textarea.title-input.clear-input(title-case type='text' ng-model="newArticle.title" placeholder="Title" ng-change="silentSave()")
     .col-xs-2
       br
-      button.btn.btn-primary(type='submit') New Article
+      button.btn.btn-primary(type='submit' ng-disabled="!newArticle.title") New Article
   hr
   div(ng-repeat="article in user.drafts" ng-include="'templates/_article-draft.jade'")
 

@@ -9,9 +9,6 @@
       i.icon.ion-home 
       | {{user.location}}
     li
-      i.icon.ion-home 
-      | {{user.location}}
-    li
       i.icon.ion-clock 
       | Joined on {{user.created_at}}
   hr
@@ -26,7 +23,7 @@
       h1 500
       small.text-muted Sharers
 .col-sm-8.col-lg-7
-  h1 {{user.name}}'s Campaigns
+  h4 Published Campaigns
   div(ng-repeat="campaign in user.campaigns | filter:{ published_at: 'true' }")
     a(href="/campaigns/{{campaign._id}}")
       h2 {{campaign.title}}

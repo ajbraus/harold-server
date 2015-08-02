@@ -10,7 +10,7 @@ var authHelpers = require('./auth-helpers')
 module.exports = function(app) {
   // ARTICLES INDEX
   app.get('/api/articles', function (req, res) {
-    Article.find().sort('-created_at').exec(function(err, articles) {
+    Article.where("published_at").ne(null).sort('-created_at').exec(function(err, articles) {
       if (err) { return res.status(404).send(err) };
 
       res.status(200).json(articles); // return all nerds in JSON format
@@ -29,7 +29,7 @@ module.exports = function(app) {
       console.log('article saved')
       if (article) {
         User.findById(req.user, function(err, user) {
-          user.drafts.push(article);
+          user.drafts.unshift(article);
           user.save(function() {
             if (article.campaign) {
               Campaign.findById(article.campaign, function(err, campaign) {
@@ -56,6 +56,24 @@ module.exports = function(app) {
     console.log(req.user)
     
     Article.findByIdAndUpdate(req.body._id, req.body, function (err, article) {
+      // UPDATE CAMPAIGN AND ADD ARTICLE TO CAMPAIGN.ARTICLES
+      if (req.body.campaign) {
+        console.log(req.body.campaign)
+        Campaign.findById(req.body.campaign, function(err, campaign) {
+          if (campaign.articles.indexOf(article._id) == -1) {
+            campaign.articles.push(article)
+            campaign.save();
+          }
+        })
+      }
+
+      // IF PUBLISHING - REMOVE ARTICLE FROM USER.DRAFTS
+      console.log(req.body.published_at)
+      if (req.body.published_at) {
+        User.update({ _id: req.user }, { $pull : {drafts : article._id } }).exec(function(err, user) {
+          console.log(user)
+        })
+      }
       res.status(200).json({ "message": "Article Saved Successfully" })
     });
   });
@@ -64,6 +82,9 @@ module.exports = function(app) {
   app.get('/api/articles/:id', function (req, res) {
     Article.findById(req.params.id).populate('campaign').exec(function(err, article) {
       if (err) { return res.status(404).send(err) };
+      article.impression_count = article.impressions_count++
+      article.save();
+      
       res.status(200).json(article); 
     });
   });

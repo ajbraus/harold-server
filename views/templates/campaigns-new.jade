@@ -1,4 +1,4 @@
-.col-sm-6.col-sm-offset-3
+.col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4
   legend New Campaign
   form(ng-submit="createCampaign()")
     .form-group
@@ -10,6 +10,7 @@
     .form-group
       label Category
       select.form-control(ng-model="campaign.category")
+        option(value="{{category}}" ng-repeat="category in categories") {{category}}
     .form-group
       label Dollar Goal Per Article
       input.form-control(type='text', ng-model="campaign.goal", placeholder="$100")

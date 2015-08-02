@@ -1,19 +1,20 @@
-.row
-  .col-sm-4.col-md-3.col-md-offset-1.col-lg-offset-2
-    a(href="/campaigns/{{campaign._id}}")
-      img.image-responsive(ng-src="{{campaign.img_url}}", style="width:100%;")
-      h4 {{campaign.title}}
-      p {{campaign.days_left}} days left
-      p %{{campaign.percent_backed}} percent of {{campaign.goal}}
-      progress(max="100" value="{{campaign.percent_backed}}")
-    hr
-    h5 Campaigns Suggested for You
-    hr
-    h5 Articles Suggested for You
-  .col-sm-7.col-md-6.col-lg-5
-    img.image-responsive(ng-src="{{article.img_url}}", style="width:100%;")
-    .text-right
-      a(href='#').btn Share on Twitter
-      a(href='#').btn Share on Facebook
-    h3(ng-bind-html="article.title")
-    p(ng-bind-html="article.body")
+.container
+  .row
+    .col-sm-4.col-md-3.col-lg-offset-2
+      a(href="/campaigns/{{article.campaign._id}}")
+        img.image-responsive(ng-src="{{article.campaign.img_url}}", style="width:100%;")
+        h4 {{article.campaign.title}}
+        p {{article.campaign.days_left}} days left
+        p %{{article.campaign.percent_backed}} percent of {{article.campaign.goal}}
+        progress(max="100" value="{{article.campaign.percent_backed}}")
+      hr
+      h5 Campaigns Suggested for You
+      hr
+      h5 Articles Suggested for You
+    .col-sm-7.col-md-6.col-lg-5
+      img.image-responsive(ng-src="{{article.img_url}}", style="width:100%;")
+      .text-right
+        a(href='#').btn Share on Twitter
+        a(href='#').btn Share on Facebook
+      h3(ng-bind-html="article.title")
+      p(ng-bind-html="article.body")

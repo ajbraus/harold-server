@@ -1,5 +1,6 @@
+{{article.word_count}}
 textarea.title-input.clear-input(ng-model="article.title" placeholder="Title" ng-change="silentSave()")
-h1.text-right.text-muted(ng-show="!video && !image")
+h3.text-right.text-muted(ng-show="!video && !image")
   i.icon.ion-ios-videocam(ng-click="video ? video = false : video = false")
   i.icon.ion-image(ng-click="image ? image = false : image = false")
 p(ng-show="image")
