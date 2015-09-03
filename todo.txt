@@ -9,11 +9,17 @@ BASIC GOALS
 Articles      
 
 New Campaign
-  authorization - only logged in can create new campaign
-  save for later vs. publish
   wizard
-  0/12 articles
-  campaign wizard - medium editor for summary
+    style wizard steps
+    validation
+    style form elements
+    update model
+  save for later vs. publish
+  preview link w feedback
+  campaign scope and duration
+  rename 'series'
+  goal in dollars pattern not working
+  multiple contributors per campaign
   DONE category dropdown select
 
 Onboarding
@@ -233,3 +239,5 @@ DONE campaign & articles impression count
 DONE Article.pre('save') count words and save
 
 DONE display articles by published_at date or updated_at date
+
+DONE medium editor for summary

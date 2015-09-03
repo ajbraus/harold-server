@@ -153,8 +153,17 @@ angular.module('myApp.controllers', [])
 
   .controller('NewCampaignCtrl', function ($scope, $location, Campaign, Categories) {
     $scope.campaign = {}
+    $scope.mediumOptions = { "placeholder": "Body",
+                             "spellcheck": true,
+                             "targetBlank": true,
+                             "disableDoubleReturn": true }
 
     $scope.categories = Categories;
+
+    $scope.exitValidation = function() {
+      console.log("i have a title")
+      return !!$scope.campaign.title
+    }
 
     $scope.createCampaign = function() {
       Campaign.save($scope.campaign, 

@@ -10,11 +10,11 @@
           img.img-responsive(ng-src="{{campaign.img_url}}")
       .col-xs-9
         a(href="/campaigns/{{campaign._id}}")
-          h2 {{campaign.title}}
-        .text-muted {{campaign.articles.length}} Articles | 30 Backers | 110% of $300 Backed ($330)
+          h3 {{campaign.title}}
+        .text-muted {{campaign.articles.length}} Articles | 30 Backers | 110% of ${{campaign.goal}} Backed ($330)
         br
         .btn-toolbar.text-right
-          a.btn.btn-sm.btn-default(href="/campaigns/edit/{{campaign._id}}") Edit
+          a.btn.btn-sm.btn-default(href="/campaigns/edit/{{campaign._id}}") Edit Campaign
           a.btn.btn-sm.btn-primary(href="/campaigns/{{campaign._id}}/articles/new") New Article
     br
     div(ng-repeat="article in campaign.articles" ng-include="'templates/_article-campaign.jade'")

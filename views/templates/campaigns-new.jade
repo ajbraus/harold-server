@@ -1,28 +1,64 @@
-.col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4
-  legend New Campaign
-  form(ng-submit="createCampaign()")
-    .form-group
-      label Title
-      input.form-control(type='text', ng-model="campaign.title")
-    .form-group
-      label Location
-      input.form-control(type='text', ng-model="campaign.location")
-    .form-group
-      label Category
-      select.form-control(ng-model="campaign.category")
-        option(value="{{category}}" ng-repeat="category in categories") {{category}}
-    .form-group
-      label Dollar Goal Per Article
-      input.form-control(type='text', ng-model="campaign.goal", placeholder="$100")
-    .form-group
-      label Image Url
-      input.form-control(type='text', ng-model="campaign.img_url")
-    .form-group
-      label Video Url
-      input.form-control(type='text', ng-model="campaign.video_url")
-    .form-group
-      label Summary
-      textarea.form-control(ng-model="campaign.summary")
-    .text-right
-      //- button.btn.btn-default(type="submit") Save for Later
-      button.btn.btn-primary(type="submit") Publish
+.container
+  .row
+    wizard(on-finish='createCampaign()' edit-mode="true" template="templates/_wizard")
+      wz-step(title='Basics')
+        h1 Basics
+        .form-group
+          label Campaign Image
+          input.form-control(type='file', ng-model="campaign.img_url")
+        .form-group
+          label Campaign Title
+          input.form-control(type='text', ng-model="campaign.title")
+        .form-group
+          label Campaign Category
+          select.form-control(ng-model="campaign.category")
+            option(value="{{category}}" ng-repeat="category in categories") {{category}}
+        .form-group
+          label Campaign Location
+          input.form-control(type='text', ng-model="campaign.location")
+      wz-step(title='The Story')
+        h1 The Story
+        .form-group
+          label Video Url
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Campaign Description
+          p.clear-input.article-body(ng-model="campaign.summary" medium-editor options='{{mediumOptions}}' ng-change="silentSave()")
+      wz-step(title='Funding')
+        h1 Funding
+        .form-group
+          label Campaign Funding Goal Per Article
+          input.form-control(type='text', ng-model="campaign.goal", placeholder="$100")
+        .form-group
+          label Campaign Scope & Duration "12 articles over 1 year"
+          input.form-control(type='text', ng-model="campaign.funding_duration")
+        .form-group
+          label Campaign Scope
+          input.form-control(type='text', ng-model="campaign.location")
+      wz-step(title='About You')
+        h1 About You
+        .form-group
+          label Twitter Handle
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Websites
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Your Location
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Google Analytics
+          input.form-control(type='text', ng-model="campaign.video_url")
+      wz-step(title='Account')
+        h1 Account
+        .form-group
+          label Email
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Phone
+          input.form-control(type='text', ng-model="campaign.video_url")
+        .form-group
+          label Identity Verfication
+          input.form-control(type='text', ng-model="campaign.video_url")
+      wz-step(title="Preview" canexit="exitValidation")  
+        {{campaign}}

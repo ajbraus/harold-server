@@ -8,7 +8,6 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , cors = require('cors')
   , mongoose = require('mongoose')
-  , passport = require('passport')
   , routes = require('./routes')
 
 if (process.env.PORT) {
@@ -23,14 +22,6 @@ require('./models/campaign');
 require('./models/user');
 
 app.use(cors())
-
-// SESSIONS AND COOKIES
-// app.use(session({
-//   saveUninitialized: true,
-//   resave: true,
-//   secret: config.SESSION_SECRET,
-//   cookie: { maxAge: 60000 }
-// }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

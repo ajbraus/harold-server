@@ -1,0 +1,10 @@
+div
+  .col-sm-3
+    ul.steps-indicator(class='steps-{{steps.length}}', ng-if='!hideIndicators')
+      li(ng-class='{default: !step.completed && !step.selected, current: step.selected && !step.completed, done: step.completed && !step.selected, editing: step.selected && step.completed}', ng-repeat='step in steps')
+        a(ng-click='goTo(step)') {{step.title || step.wzTitle}}
+    .btn-toolbar
+      input.btn.btn-default(type='submit', wz-previous='', value='Back')
+      input.btn.btn-primary(type='submit', wz-next='', value='Continue')
+  .col-sm-7.col-sm-offset-1
+    .steps(ng-transclude='')

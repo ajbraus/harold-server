@@ -1,8 +1,8 @@
 .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
   form.row(ng-submit="createArticle()")
-    .col-xs-10
-      textarea.title-input.clear-input(title-case type='text' ng-model="newArticle.title" placeholder="Title" ng-change="silentSave()")
-    .col-xs-2
+    .col-xs-9
+      textarea.title-input.clear-input(title-case autofocus="true" type='text' ng-model="newArticle.title" placeholder="Title" ng-change="silentSave()")
+    .col-xs-3.text-right
       br
       button.btn.btn-primary(type='submit' ng-disabled="!newArticle.title") New Article
   hr

@@ -12,11 +12,12 @@ angular.module('myApp', ['ngResource',
                          'satellizer',
                          'angularMoment',
                          'angular-medium-editor',
+                         'mgo-angular-wizard',
                          'myApp.services',
                          'myApp.controllers'])
 
-  // .constant('HOST', 'http://localhost:1337/api') //DEV
-  .constant('HOST', 'http://inqyer.herokuapp.com/api') //PRODUCTION
+  .constant('HOST', 'http://localhost:1337/api') //DEV
+  // .constant('HOST', 'http://inqyer.herokuapp.com/api') //PRODUCTION
   
   .config(['$stateProvider', '$locationProvider', '$authProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $authProvider, $urlRouterProvider) {
     
